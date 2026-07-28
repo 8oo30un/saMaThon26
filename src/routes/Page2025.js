@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import ThisYear from "../components/ThisYear";
-import Navbar from "../components/Navbar2";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 function Page2025() {
   const Page2025 = styled.div`

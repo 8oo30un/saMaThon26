@@ -1,104 +1,136 @@
 import styled from "styled-components";
-import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import footerLogo from "../assets/img/2026/footer-logo.svg";
 
-const FooterComponent = styled.footer`
-  background-color: black;
-  color: white;
-  padding: 20px 40px;
-  font-size: 14px;
+const FooterRoot = styled.footer`
+  background-color: #0e0e0f;
+  color: #fff;
+  width: 100%;
+  padding: 40px 44px 24px;
+  box-sizing: border-box;
+  font-family: Pretendard, sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 36px 20px 20px;
+  }
+`;
+
+const Inner = styled.div`
+  max-width: 1352px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 46px;
+`;
+
+const Top = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`;
+
+const Logo = styled.img`
+  width: 237px;
+  height: 60px;
+  display: block;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    width: 180px;
+    height: auto;
+  }
+`;
+
+const InfoRow = styled.div`
+  display: flex;
   align-items: center;
-  font-family: "Gowun Dodum", sans-serif;
-  font-weight: 600;
+  justify-content: space-between;
+  gap: 24px;
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
   }
 `;
 
-const FooterLeft = styled.div`
+const Info = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
 
   p {
-    margin: 5px 0;
+    margin: 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 1;
   }
 `;
 
-const FooterRight = styled.div`
-  display: flex;
+const EmailButton = styled.a`
+  display: inline-flex;
   align-items: center;
-  gap: 20px;
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 10px;
-
-  a {
-    color: white;
-    font-size: 25px;
-    text-decoration: none;
-
-    &:hover {
-      color: #ccc;
-    }
-  }
-`;
-
-const ContactButton = styled.a`
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
+  justify-content: center;
+  background: #5170ff;
+  color: #fff;
   text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+
   &:hover {
-    background-color: white;
-    color: black;
+    background: #3f5cf0;
   }
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+`;
+
+const Copyright = styled.p`
+  margin: 0;
+  color: #747881;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1;
 `;
 
 function Footer() {
   return (
-    <FooterComponent>
-      <FooterLeft>
-        <p>한동대학교 사랑의 마라톤 TFT</p>
-        <p>문의 내선번호: 054-260-1874</p>
-        <p>© 2025 Love Marathon. All Rights Reserved.</p>
-      </FooterLeft>
-      <FooterRight>
-        <SocialIcons>
-          <a
-            href="https://www.instagram.com/2025_lovemarathon/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.facebook.com/lovemarathonforever/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaFacebookF />
-          </a>
-          <a
-            href="https://youtu.be/QNCErAy7jvA?si=osxkhnLXGGpUyPIv"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaYoutube />
-          </a>
-        </SocialIcons>
-        <ContactButton href="mailto:2025lovemarathon@gmail.com">
-          문의/후원 Email
-        </ContactButton>
-      </FooterRight>
-    </FooterComponent>
+    <FooterRoot>
+      <Inner>
+        <Top>
+          <Logo src={footerLogo} alt="사랑의마라톤" />
+          <InfoRow>
+            <Info>
+              <p>담당  |  한동대학교 사랑의 마라톤 TFT</p>
+              <p>문의  |  054-260-1874</p>
+            </Info>
+            <EmailButton href="mailto:2025lovemarathon@gmail.com">
+              문의 / 후원 Email
+            </EmailButton>
+          </InfoRow>
+        </Top>
+        <Bottom>
+          <Divider />
+          <Copyright>© 2026 Love Marathon. All Rights Reserved.</Copyright>
+        </Bottom>
+      </Inner>
+    </FooterRoot>
   );
 }
 
