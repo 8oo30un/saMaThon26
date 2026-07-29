@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import headerLogo from "../assets/img/2026/header-logo.svg";
+import headerLogoWhite from "../assets/img/2026/header-logo-white.svg";
 import tooltipStar from "../assets/img/2026/tooltip-star.svg";
 
 const float = keyframes`
@@ -33,7 +34,7 @@ const HeaderInner = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 22px 44px;
+  padding: 22px 48px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -72,18 +73,20 @@ const LogoLink = styled(Link)`
 const MenuList = styled.nav`
   display: flex;
   align-items: center;
-  gap: 44px;
+  gap: 48px;
 
   a {
     text-decoration: none;
-    color: #000;
+    color: ${(props) => (props.$light ? "#fff" : "#000")};
     font-family: Pretendard, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: -0.5px;
     line-height: 1;
     white-space: nowrap;
     transition: color 0.2s ease;
+    text-shadow: ${(props) =>
+      props.$light ? "0 1px 2px rgba(0, 0, 0, 0.35)" : "none"};
 
     &:hover {
       color: #5170ff;
@@ -115,6 +118,8 @@ const MenuList = styled.nav`
 
     a {
       font-size: 18px;
+      color: #000;
+      text-shadow: none;
     }
   }
 `;
@@ -123,15 +128,15 @@ const RightArea = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
-  width: 162px;
+  min-width: 162px;
 
   @media (max-width: 768px) {
     width: auto;
+    min-width: 0;
     display: none;
   }
 `;
 
-/* 피그마: 신청하기 버튼 기준 토스트 중앙 정렬 */
 const ApplyWrap = styled.div`
   position: relative;
   display: inline-flex;
@@ -146,7 +151,7 @@ const ApplyButton = styled(Link)`
   background: #5170ff;
   color: #fff;
   font-family: Pretendard, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.5px;
   line-height: 1;
@@ -162,7 +167,6 @@ const ApplyButton = styled(Link)`
   }
 `;
 
-/* 피그마 1001:192 — 버튼 하단 중앙, 버튼과 간격 확보 */
 const Tooltip = styled.button`
   position: absolute;
   top: calc(100% + 20px);
@@ -209,7 +213,7 @@ const Toggle = styled.button`
   display: none;
   background: none;
   border: none;
-  color: #5170ff;
+  color: ${(props) => (props.$light ? "#fff" : "#5170ff")};
   font-size: 1.5rem;
   padding: 4px;
   cursor: pointer;
@@ -230,7 +234,7 @@ const MobileApplyLink = styled(Link)`
     background: #5170ff;
     color: #fff !important;
     font-family: Pretendard, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: -0.5px;
     text-decoration: none;
@@ -251,37 +255,55 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => {
-      // 피그마 주석: 인사말 섹션부터 흰색 배경
-      setIsScrolled(window.scrollY > 700);
+      if (isHome) {
+        // 히어로(동영상): 투명+흰 로고 / 아래 사진 카드 구간부터: 불투명+파란 로고
+        const heroEnd = Math.max(window.innerHeight - 84, 0);
+        setIsScrolled(window.scrollY >= heroEnd);
+      } else {
+        // /2026 등: 인사말 섹션부터 흰색 배경
+        setIsScrolled(window.scrollY > 700);
+      }
     };
 
+    onScroll();
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isHome]);
 
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  const opaque = isScrolled || isOpen;
+  const lightMenu = isHome && !opaque;
+  // 홈만: 초반 흰 로고 → 사진 구간부터 파란 로고 (/2026은 항상 파란 로고)
+  const logoSrc = isHome && !opaque ? headerLogoWhite : headerLogo;
+
   return (
-    <Header $isScrolled={isScrolled || isOpen}>
+    <Header $isScrolled={opaque}>
       <HeaderInner>
         <LogoLink to="/">
-          <img src={headerLogo} alt="사랑마라톤" />
+          <img src={logoSrc} alt="사랑마라톤" />
         </LogoLink>
 
         <Toggle
           type="button"
           aria-label="메뉴 열기"
+          $light={lightMenu}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
         </Toggle>
 
-        <MenuList $isOpen={isOpen}>
+        <MenuList $isOpen={isOpen} $light={lightMenu}>
           {MENU_ITEMS.map((item) => (
             <Link
               key={item.to}

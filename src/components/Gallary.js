@@ -299,6 +299,24 @@ const GalleryContainer = styled.div`
       font-size: 12px;
     }
   }
+
+  .registerButtonBlue {
+    color: #5170ff;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 12px 50px;
+    font-size: 20px;
+    font-family: Pretendard;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px #5170ff solid;
+    border-radius: 999px;
+    margin-top: 10px;
+    letter-spacing: -0.67px;
+    @media screen and (max-width: 768px) {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+  }
 `;
 
 const Gallary = () => {
@@ -320,6 +338,9 @@ const Gallary = () => {
     }
     if (logos[`${year}.jpg`]) {
       return logos[`${year}.jpg`];
+    }
+    if (logos[`${year}.svg`]) {
+      return logos[`${year}.svg`];
     }
     return null;
   };
@@ -450,10 +471,10 @@ const Gallary = () => {
                   <h2>{event.year}</h2>
                 </div>
               </div>
-              {event.year === 2025 && (
-                <Link to={`/2025`}>
-                  <button className="registerButton">
-                    2025 페이지 바로가기
+              {event.year === 2026 && (
+                <Link to={`/2026`}>
+                  <button className="registerButtonBlue">
+                    2026 페이지 바로가기
                   </button>
                 </Link>
               )}

@@ -81,9 +81,9 @@ const SubmitButton = styled.button`
 const BannerManagement = () => {
   const [bannerData, setBannerData] = useState({
     bgImage: "",
-    text: "",
-    buttonText1: "",
-    link1: "",
+    text: "제18회 사랑의 마라톤 참가자 모집",
+    buttonText1: "2026사마톤 페이지 바로가기",
+    link1: "/2026",
     buttonText2: "",
     link2: "",
   });

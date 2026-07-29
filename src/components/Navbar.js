@@ -217,9 +217,6 @@ function Navbar({ isBannerVisible }) {
           <Link to={`/2026`}>
             <li className="en">2026사마톤</li>
           </Link>
-          <Link to={`/2025`}>
-            <li className="en">2025사마톤</li>
-          </Link>
           <Link to={`/gallary`}>
             <li className="en">갤러리</li>
           </Link>

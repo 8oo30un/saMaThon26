@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar2";
 import Footer from "../components/Footer";
-import PopupBanner from "../components/PopupBanner";
 import Home from "../components/Home";
 
 const HomePageWrapper = styled.div`
@@ -12,16 +11,9 @@ const HomePageWrapper = styled.div`
 `;
 
 function HomePage() {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
-
-  const handleBannerClose = () => {
-    setIsBannerVisible(false);
-  };
-
   return (
     <HomePageWrapper>
-      {isBannerVisible && <PopupBanner onClose={handleBannerClose} />}
-      <Navbar isBannerVisible={isBannerVisible} />
+      <Navbar />
       <Home />
       <Footer />
     </HomePageWrapper>

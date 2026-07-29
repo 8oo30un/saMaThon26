@@ -1,0 +1,46 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="666" height="176.643" viewBox="0 0 666 176.643" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 225">
+<rect id="Rectangle 94" x="193.393" y="11.8272" width="16.846" height="68.9221" fill="white"/>
+<rect id="Rectangle 84" x="75.7389" y="12.3017" width="18.9417" height="149.958" fill="white"/>
+<path id="Rectangle 146" d="M38.8535 11.8973L19.167 140.546H1.22656L20.9131 11.8973H38.8535Z" fill="white"/>
+<rect id="Rectangle 101" x="312.074" y="11.8272" width="18.9417" height="150.432" fill="white"/>
+<rect id="Rectangle 85" x="89.9479" y="37.3176" width="15.4351" height="12.1387" fill="white"/>
+<rect id="Rectangle 129" x="205.504" y="37.4906" width="15.4351" height="12.1387" fill="white"/>
+<rect id="Rectangle 102" x="237.473" y="139.528" width="93.5419" height="8.44391" fill="white"/>
+<rect id="Rectangle 96" x="115.881" y="11.8272" width="60.1119" height="6.33398" fill="white"/>
+<rect id="Rectangle 97" x="115.881" y="43.295" width="62.1073" height="6.33398" fill="white"/>
+<rect id="Rectangle 98" x="115.881" y="74.4167" width="62.1073" height="6.33398" fill="white"/>
+<rect id="Rectangle 99" x="115.881" y="43.295" width="18.9518" height="37.4555" fill="white"/>
+<rect id="Rectangle 100" x="159.039" y="11.8272" width="18.9518" height="29.3609" fill="white"/>
+<g id="Subtract">
+<path d="M203.703 132.775C203.703 155.607 189.342 174.116 171.627 174.116C153.913 174.116 139.552 155.607 139.552 132.775C139.552 109.944 153.913 91.4356 171.627 91.4355C189.342 91.4355 203.703 109.944 203.703 132.775ZM188.722 132.197C188.722 114.421 181.166 100.01 171.845 100.01C162.524 100.01 154.967 114.421 154.967 132.197C154.967 149.974 162.524 164.384 171.845 164.384C181.166 164.384 188.722 149.973 188.722 132.197Z" fill="white"/>
+</g>
+<g id="Subtract_2">
+<path d="M59.4175 139.774C59.4175 127.479 58.5906 114.727 56.9858 103.367C55.3811 92.0074 53.0292 81.6853 50.064 72.991C47.0988 64.2969 43.5778 57.4004 39.7036 52.6951C35.8294 47.9899 31.6773 45.5682 27.4839 45.5682L27.4849 67.2742C27.9813 67.1377 28.4804 67.0682 28.981 67.0682C36.1494 68.1347 44.5034 90.737 44.5034 130.474C44.5034 133.626 44.4565 136.73 44.3647 139.774H59.4175Z" fill="white"/>
+</g>
+<rect id="Rectangle 107" x="425.136" y="11.8272" width="18.9417" height="150.432" fill="white"/>
+<rect id="Rectangle 113" x="539.55" y="11.8272" width="18.9417" height="150.846" fill="white"/>
+<rect id="Rectangle 108" x="439.34" y="37.4028" width="15.4351" height="12.1387" fill="white"/>
+<rect id="Rectangle 114" x="553.719" y="37.4028" width="15.4351" height="12.1387" fill="white"/>
+<rect id="Rectangle 120" x="580.918" y="103.554" width="8.44391" height="83.9629" transform="rotate(-90 580.918 103.554)" fill="white"/>
+<rect id="Rectangle 121" x="613.468" y="93.0044" width="14.7737" height="18.9518" transform="rotate(-90 613.468 93.0044)" fill="white"/>
+<rect id="Rectangle 115" x="464.935" y="11.8272" width="57.1937" height="6.33398" fill="white"/>
+<rect id="Rectangle 133" x="350.53" y="12.3122" width="57.1937" height="6.33398" fill="white"/>
+<rect id="Rectangle 110" x="350.53" y="132.388" width="61.2704" height="6.33398" fill="white"/>
+<rect id="Rectangle 116" x="464.935" y="132.388" width="59.2744" height="6.33398" fill="white"/>
+<rect id="Rectangle 119" x="464.935" y="72.1072" width="59.2744" height="6.33398" fill="white"/>
+<rect id="Rectangle 138" x="580.918" y="63.6674" width="84.0051" height="6.33398" fill="white"/>
+<rect id="Rectangle 139" x="580.918" y="11.8272" width="84.0051" height="6.33398" fill="white"/>
+<rect id="Rectangle 140" x="580.942" y="37.7465" width="84.0051" height="6.33398" fill="white"/>
+<rect id="Rectangle 90" x="580.918" y="153.815" width="84.0262" height="8.44391" fill="white"/>
+<rect id="Rectangle 89" x="580.918" y="16.3381" width="18.9518" height="53.6632" fill="white"/>
+<rect id="Rectangle 111" x="350.53" y="16.2883" width="18.9518" height="122.432" fill="white"/>
+<rect id="Rectangle 117" x="464.935" y="72.1072" width="18.9518" height="66.6144" fill="white"/>
+<rect id="Rectangle 112" x="392.85" y="12.3122" width="18.9518" height="121.412" fill="white"/>
+<rect id="Rectangle 118" x="507.254" y="11.8272" width="18.9518" height="66.6133" fill="white"/>
+<rect id="Rectangle 91" x="580.918" y="111.831" width="18.9518" height="42.2028" fill="white"/>
+<g id="Union">
+<path d="M258.33 48.4137L231.914 21.945L222.541 31.3375L249.168 58.0182H205.974V71.7457H247.637L223.648 95.7828L233.022 105.175L258.33 79.816V127.648H272.031V80.9274L296.226 105.172L305.599 95.7799L281.615 71.7457H321.821V58.0182H280.084L306.71 31.3385L297.337 21.9459L272.031 47.3024V2.11585H258.33V48.4137Z" fill="white"/>
+</g>
+</g>
+</svg>

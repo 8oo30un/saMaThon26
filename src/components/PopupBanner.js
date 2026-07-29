@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../index"; // Firebase 설정이 있는 파일
+import { getDoc, doc, setDoc } from "firebase/firestore";
+import { db } from "../index";
 import cancel from "../assets/img/cancel.png";
 
 const BannerWrapper = styled.div`
@@ -23,7 +24,7 @@ const BannerWrapper = styled.div`
   z-index: 1000;
 
   @media (max-width: 768px) {
-    display: none; /* Hide the banner on mobile devices */
+    display: none;
   }
 `;
 
@@ -33,23 +34,31 @@ const BannerText = styled.div`
   font-weight: bold;
 `;
 
-const BannerButton = styled.a`
+const bannerButtonStyles = `
   background-color: transparent;
   border: 2px solid white;
   padding: 7px 15px;
   color: white;
   text-decoration: none;
-  border-radius: 50px; /* Capsule shape */
+  border-radius: 50px;
   margin-left: 10px;
   font-size: 14px;
   transition: background-color 0.3s, color 0.3s;
   font-weight: 700;
   display: inline-flex;
-  align-items: center; /* Vertically centers the content */
+  align-items: center;
   &:hover {
     background-color: white;
     color: black;
   }
+`;
+
+const BannerButton = styled.a`
+  ${bannerButtonStyles}
+`;
+
+const BannerLink = styled(Link)`
+  ${bannerButtonStyles}
 `;
 
 const CloseButton = styled.button`
@@ -61,11 +70,55 @@ const CloseButton = styled.button`
   cursor: pointer;
   margin-left: 10px;
   display: flex;
-  align-items: center; /* Vertically centers the close icon */
+  align-items: center;
   img {
     width: 15px;
   }
 `;
+
+const DEFAULT_BANNER = {
+  text: "제18회 사랑의 마라톤 참가자 모집",
+  buttonText1: "2026사마톤 페이지 바로가기",
+  link1: "/2026",
+};
+
+const isInternalPath = (url = "") => url.startsWith("/");
+
+const normalizeExternalURL = (url) => {
+  if (!url) return url;
+  if (isInternalPath(url)) return url;
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    return `https://${url}`;
+  }
+  return url;
+};
+
+/** 기존 배너 문구/링크를 2026 기준으로 맞춤 */
+const migrateBannerData = (data = {}) => {
+  const next = { ...data };
+
+  if (!next.text || /제\s*17회|2025/.test(next.text)) {
+    next.text = DEFAULT_BANNER.text;
+  } else {
+    next.text = next.text.replace(/제\s*17회/g, "제18회");
+  }
+
+  if (!next.buttonText1 || /2025/.test(next.buttonText1)) {
+    next.buttonText1 = DEFAULT_BANNER.buttonText1;
+  } else {
+    next.buttonText1 = next.buttonText1.replace(/2025/g, "2026");
+  }
+
+  if (
+    !next.link1 ||
+    /2025/.test(next.link1) ||
+    next.link1.includes("2025")
+  ) {
+    next.link1 = DEFAULT_BANNER.link1;
+  }
+
+  return next;
+};
 
 const PopupBanner = ({ onClose }) => {
   const [showBanner, setShowBanner] = useState(true);
@@ -78,9 +131,24 @@ const PopupBanner = ({ onClose }) => {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setBannerData(docSnap.data());
+        const migrated = migrateBannerData(docSnap.data());
+        setBannerData(migrated);
+
+        const original = docSnap.data();
+        if (
+          original.text !== migrated.text ||
+          original.buttonText1 !== migrated.buttonText1 ||
+          original.link1 !== migrated.link1
+        ) {
+          try {
+            await setDoc(docRef, migrated, { merge: true });
+          } catch (e) {
+            // 읽기만 가능한 환경에서도 UI는 2026 기준으로 표시
+            console.warn("Banner migration save skipped:", e);
+          }
+        }
       } else {
-        console.log("No such document!");
+        setBannerData(DEFAULT_BANNER);
       }
     };
 
@@ -96,13 +164,8 @@ const PopupBanner = ({ onClose }) => {
       }
     };
 
-    // Check the window size when the component mounts
     handleResize();
-
-    // Add event listener to handle window resizing
     window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -110,32 +173,31 @@ const PopupBanner = ({ onClose }) => {
 
   const handleCloseBanner = () => {
     setShowBanner(false);
-    onClose(); // Notify parent component to hide the banner
+    onClose();
   };
 
   if (!bannerData || !showBanner || !isBannerVisible) {
     return null;
   }
 
-  const normalizeURL = (url) => {
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      return `https://${url}`;
+  const renderButton = (text, link) => {
+    if (!text) return null;
+    if (isInternalPath(link)) {
+      return <BannerLink to={link}>{text}</BannerLink>;
     }
-    return url;
+    return (
+      <BannerButton href={normalizeExternalURL(link)} target="_blank" rel="noreferrer">
+        {text}
+      </BannerButton>
+    );
   };
 
   return (
     <BannerWrapper bgImage={bannerData.bgImage} show={showBanner}>
       <BannerText>{bannerData.text}</BannerText>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <BannerButton href={normalizeURL(bannerData.link1)} target="_blank">
-          {bannerData.buttonText1}
-        </BannerButton>
-        {bannerData.buttonText2 && (
-          <BannerButton href={normalizeURL(bannerData.link2)} target="_blank">
-            {bannerData.buttonText2}
-          </BannerButton>
-        )}
+        {renderButton(bannerData.buttonText1, bannerData.link1)}
+        {renderButton(bannerData.buttonText2, bannerData.link2)}
         <CloseButton onClick={handleCloseBanner}>
           <img src={cancel} alt="close" />
         </CloseButton>

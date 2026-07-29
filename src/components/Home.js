@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import homelogo from "../assets/img/homelogo.png";
+import homeLogo from "../assets/img/2026/home-logo.svg";
 import styled from "styled-components";
 
 import bgVideo from "../assets/video/bgvideo.mp4";
@@ -47,11 +47,24 @@ const HomeWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    gap: 28px;
+  }
+
+  .theme {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    font-family: Pretendard, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1;
   }
 
   .homelogo {
-    width: 809px;
-    text-align: center;
+    width: min(666px, 90vw);
+    height: auto;
+    display: block;
   }
 
   .desc {
@@ -63,6 +76,7 @@ const HomeWrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 160%;
+    margin: 0;
   }
 
   .apply {
@@ -108,6 +122,11 @@ const HomeWrapper = styled.div`
   @media screen and (max-width: 768px) {
     .content {
       padding-bottom: 20%;
+      gap: 20px;
+    }
+
+    .theme {
+      font-size: 16px;
     }
 
     .title {
@@ -220,7 +239,8 @@ function Home() {
         </video>
         <div className="overlay"></div>
         <div className="content">
-          <img src={homelogo} className="homelogo" alt="Home Logo" />
+          <p className="theme">각자의 모습으로, 같은 길을</p>
+          <img src={homeLogo} className="homelogo" alt="사랑의 마라톤" />
           <p
             className="desc"
             dangerouslySetInnerHTML={{

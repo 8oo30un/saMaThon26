@@ -46,6 +46,7 @@ const events = [
   },
   { index: 16, year: 2024, title: "Fill in your {Blank}" },
   { index: 17, year: 2025, title: "한 마음, 한 걸음, 하나의 사랑" },
+  { index: 18, year: 2026, title: "각자의 모습으로, 같은 길을" },
 ];
 
 export { logos, images, events };
