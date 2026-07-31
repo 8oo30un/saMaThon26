@@ -159,7 +159,7 @@ function Apply() {
       <div className="overlay"></div>
       <div className="content">
         <a
-          href="https://forms.gle/haLCtRxt2pERt1HW8"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdiQ9xk6A3YqYFM-AMTT4ggb1X_rIU6YLgl9rwie1PzzOtqeQ/viewform?usp=dialog"
           target="_blank"
           rel="noopener noreferrer"
           className="card"
@@ -179,7 +179,7 @@ function Apply() {
           </div>
         </a>
         <a
-          href="https://forms.gle/wfCDzA3iVLEh4uTC7"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfGzCMams1YWJXhMa6kkHVKcPwv_Tu-rnAG_YM_cDJyCIu8Rw/viewform?usp=dialog"
           target="_blank"
           rel="noopener noreferrer"
           className="card"

@@ -1,7 +1,7 @@
 import Apply from "../components/Apply";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar2";
 import Footer from "../components/Footer";
 function ApplyPage() {
   const ApplyPage = styled.div`

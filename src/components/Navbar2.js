@@ -256,10 +256,15 @@ function Navbar() {
   const [showTooltip, setShowTooltip] = useState(true);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isApply = location.pathname === "/apply";
+  const isDarkHero = isHome || isApply;
 
   useEffect(() => {
     const onScroll = () => {
-      if (isHome) {
+      if (isApply) {
+        // /apply: 스크롤해도 항상 투명 헤더 유지
+        setIsScrolled(false);
+      } else if (isHome) {
         // 히어로(동영상): 투명+흰 로고 / 아래 사진 카드 구간부터: 불투명+파란 로고
         const heroEnd = Math.max(window.innerHeight - 84, 0);
         setIsScrolled(window.scrollY >= heroEnd);
@@ -276,16 +281,17 @@ function Navbar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [isHome]);
+  }, [isHome, isApply, location.pathname]);
 
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  const opaque = isScrolled || isOpen;
-  const lightMenu = isHome && !opaque;
-  // 홈만: 초반 흰 로고 → 사진 구간부터 파란 로고 (/2026은 항상 파란 로고)
-  const logoSrc = isHome && !opaque ? headerLogoWhite : headerLogo;
+  // /apply: 스크롤·메뉴 열림과 무관하게 투명 + 흰 로고/메뉴 유지
+  const opaque = isApply ? false : isScrolled || isOpen;
+  const lightMenu = isApply || (isDarkHero && !opaque);
+  const logoSrc =
+    isApply || (isDarkHero && !opaque) ? headerLogoWhite : headerLogo;
 
   return (
     <Header $isScrolled={opaque}>
@@ -316,22 +322,24 @@ function Navbar() {
           <MobileApplyLink to="/apply">신청하기</MobileApplyLink>
         </MenuList>
 
-        <RightArea>
-          <ApplyWrap>
-            <ApplyButton to="/apply">신청하기</ApplyButton>
-            {showTooltip && (
-              <Tooltip
-                type="button"
-                aria-label="참가자 신청하기 안내 닫기"
-                onClick={() => setShowTooltip(false)}
-              >
-                <img src={tooltipStar} alt="" />
-                참가자 신청하기
-                <img src={tooltipStar} alt="" />
-              </Tooltip>
-            )}
-          </ApplyWrap>
-        </RightArea>
+        {!isApply && (
+          <RightArea>
+            <ApplyWrap>
+              <ApplyButton to="/apply">신청하기</ApplyButton>
+              {showTooltip && (
+                <Tooltip
+                  type="button"
+                  aria-label="참가자 신청하기 안내 닫기"
+                  onClick={() => setShowTooltip(false)}
+                >
+                  <img src={tooltipStar} alt="" />
+                  참가자 신청하기
+                  <img src={tooltipStar} alt="" />
+                </Tooltip>
+              )}
+            </ApplyWrap>
+          </RightArea>
+        )}
       </HeaderInner>
     </Header>
   );
