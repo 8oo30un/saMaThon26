@@ -190,10 +190,12 @@ const Card = styled.div`
   }
 
   img {
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 16px;
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: 220px;
+    object-fit: contain;
+    background: #fff;
+    display: block;
   }
 `;
 

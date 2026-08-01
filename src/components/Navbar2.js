@@ -6,6 +6,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import headerLogo from "../assets/img/2026/header-logo.svg";
 import headerLogoWhite from "../assets/img/2026/header-logo-white.svg";
 import tooltipStar from "../assets/img/2026/tooltip-star.svg";
+import MobileCtaBanner from "./MobileCtaBanner";
 
 const float = keyframes`
   0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -13,13 +14,14 @@ const float = keyframes`
 `;
 
 const Header = styled.header`
-  height: 84px;
   width: 100%;
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
   background-color: ${(props) =>
     props.$isScrolled ? "rgba(255, 255, 255, 0.92)" : "transparent"};
   backdrop-filter: ${(props) => (props.$isScrolled ? "blur(12px)" : "none")};
@@ -311,6 +313,7 @@ function Navbar() {
 
   return (
     <Header $isScrolled={opaque}>
+      {!isOpen && <MobileCtaBanner />}
       <HeaderInner>
         <LogoLink to="/">
           <img src={logoSrc} alt="사랑마라톤" />
@@ -330,7 +333,9 @@ function Navbar() {
             <Link
               key={item.to}
               to={item.to}
-              className={location.pathname.startsWith(item.to) ? "active" : ""}
+              className={
+                location.pathname.startsWith(item.to) ? "active" : ""
+              }
             >
               {item.label}
             </Link>

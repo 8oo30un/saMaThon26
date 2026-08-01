@@ -279,9 +279,10 @@ const Intro = styled(Section)`
 
 const Preview = styled(Section)`
   background: linear-gradient(180deg, #f8f9fc 0%, #f8f9fc 83.64%, #fff 100%);
-  padding: 160px 24px 120px;
+  padding: 160px 40px 120px;
   min-height: 1400px;
-  overflow: hidden;
+  overflow: visible;
+  box-sizing: border-box;
 
   /* 피그마 1012:2517 / 2522 / 2527 — 데코 위치 조정 */
   .deco-1 {
@@ -314,15 +315,16 @@ const Preview = styled(Section)`
   .grid {
     position: relative;
     z-index: 1;
-    max-width: 1200px;
+    max-width: 1120px;
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 28px;
     row-gap: 56px;
     justify-items: center;
     align-items: start;
+    box-sizing: border-box;
   }
 
   .grid > *:nth-child(2) {
@@ -347,12 +349,13 @@ const Preview = styled(Section)`
 
   @media (max-width: 1024px) {
     min-height: auto;
-    padding: 100px 20px;
+    padding: 100px 32px;
 
     .grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px 16px;
-      max-width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 28px;
+      max-width: 720px;
     }
 
     .grid > * {
@@ -360,11 +363,14 @@ const Preview = styled(Section)`
     }
   }
 
-  @media (max-width: 640px) {
-    padding: 80px 16px;
+  @media (max-width: 768px) {
+    padding: 80px 24px;
 
     .grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 343px;
+      column-gap: 0;
+      row-gap: 24px;
     }
   }
 `;
@@ -375,7 +381,8 @@ const ImageCard = styled.div`
   background: #fff;
   border-radius: 20px;
   padding: 20px 20px 24px;
-  width: min(343px, 100%);
+  width: 100%;
+  max-width: 343px;
   box-sizing: border-box;
   box-shadow: 0 12px 40px rgba(81, 112, 255, 0.08);
   transform: rotate(${(props) => props.$rotate || "0deg"});
@@ -413,7 +420,7 @@ const ImageCard = styled.div`
   .caption p {
     margin: 0;
     font-family: "Nanum NeuRisNeuRisCe", cursive;
-    font-size: 28px;
+    font-size: 26px;
     line-height: 1.5;
     letter-spacing: -0.56px;
     color: #000;
@@ -429,6 +436,7 @@ const ImageCard = styled.div`
 
   @media (max-width: 768px) {
     transform: none;
+    max-width: none;
 
     &:hover {
       transform: translateY(-4px);
@@ -515,7 +523,8 @@ const EventInfo = styled(Section)`
 
 const Timetable = styled(Section)`
   padding: 100px 24px 120px;
-  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   /* 피그마 1001:297 — 우측 파란 별 (left: 81.25%) */
   .deco-1 {

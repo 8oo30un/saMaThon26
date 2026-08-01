@@ -18,8 +18,11 @@ const GalleryContainer = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
-  padding: 0; /* Added to remove padding */
-  margin: 0; /* Added to remove margin */
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 
   .cover {
     background-image: url(${bg});
@@ -39,6 +42,8 @@ const GalleryContainer = styled.div`
     flex-direction: column;
     transition: transform 0.5s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 고정 커버가 터치를 가로채 스크롤이 안 되는 문제 방지 */
+    pointer-events: none;
 
     @media screen and (max-width: 768px) {
       background-image: url(${bgmo});
@@ -112,8 +117,10 @@ const GalleryContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 200vh;
+    box-sizing: border-box;
     @media screen and (max-width: 768px) {
-      /* padding: 40px; */
+      padding: 0 16px 40px;
+      max-width: 100%;
     }
   }
 
@@ -121,6 +128,8 @@ const GalleryContainer = styled.div`
     margin-bottom: 40px;
     padding-top: 100px;
     font-family: Pretendard;
+    width: 100%;
+    box-sizing: border-box;
     @media screen and (max-width: 768px) {
       margin-bottom: 40px;
       padding-top: 0px;
@@ -129,17 +138,23 @@ const GalleryContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      box-sizing: border-box;
       @media screen and (max-width: 768px) {
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
-        margin-right: 20px;
+        margin-right: 0;
+        flex-wrap: wrap;
       }
     }
     .header {
       display: flex;
       align-items: center;
       gap: 30px;
+      min-width: 0;
+      flex: 1;
       @media screen and (max-width: 768px) {
         gap: 10px;
       }
@@ -147,11 +162,12 @@ const GalleryContainer = styled.div`
         width: 150px;
         height: 150px;
         border-radius: 20px;
+        flex-shrink: 0;
         @media screen and (max-width: 768px) {
           width: 50px;
           height: 50px;
           border-radius: 10px;
-          margin-left: 20px;
+          margin-left: 0;
         }
       }
 
@@ -207,30 +223,49 @@ const GalleryContainer = styled.div`
 
     .images {
       margin-top: 20px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
 
       .masonry-grid {
         display: flex;
-        width: auto;
+        width: 100%;
+        max-width: 100%;
         gap: 30px;
+        box-sizing: border-box;
       }
 
       .masonry-grid_column {
         background-clip: padding-box;
+        min-width: 0;
       }
 
       .masonry-grid_column > div {
         margin-bottom: 30px;
         margin-right: 0px;
+        max-width: 100%;
       }
 
       img {
         width: 100%;
+        max-width: 100%;
         height: auto;
         display: block;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      @media screen and (max-width: 768px) {
+        .masonry-grid {
+          gap: 12px;
+        }
+
+        .masonry-grid_column > div {
+          margin-bottom: 12px;
+        }
       }
     }
   }

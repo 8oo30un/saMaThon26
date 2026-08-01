@@ -14,10 +14,17 @@ const CommunityWrapper = styled.div`
   margin: 0 auto;
   font-family: Pretendard;
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   h1 {
     text-align: center;
     font-family: Pretendard;
+  }
+
+  @media (max-width: 768px) {
+    padding: 100px 16px 100px;
   }
 `;
 

@@ -7,9 +7,7 @@
   font-display: swap;
 }
 
-html,
-body,
-#root {
+html {
   overscroll-behavior-y: none;
 }
 
@@ -21,6 +19,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
+  overscroll-behavior-y: none;
+  /* overflow-x:hidden 을 html/#root 에 같이 주면 세로 스크롤이 깨질 수 있음 */
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+#root {
+  max-width: 100%;
 }
 
 code {
