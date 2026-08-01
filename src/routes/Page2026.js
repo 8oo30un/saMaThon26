@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 const PageWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #ffffff;;
 `;
 
 function Page2026() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import homeLogo from "../assets/img/2026/home-logo.svg";
+import homeLogo from "../assets/img/2026/home-logo.png";
 import styled from "styled-components";
 
 import bgVideo from "../assets/video/bgvideo.mp4";
@@ -65,6 +65,7 @@ const HomeWrapper = styled.div`
     width: min(666px, 90vw);
     height: auto;
     display: block;
+    object-fit: contain;
   }
 
   .desc {

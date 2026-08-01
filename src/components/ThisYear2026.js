@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import heroLogo from "../assets/img/2026/hero-logo.svg";
 import decoHeroLeft from "../assets/img/2026/deco-hero-left.svg";
 import decoHeroRight from "../assets/img/2026/deco-hero-right.svg";
@@ -10,9 +10,26 @@ import tagStar from "../assets/img/2026/tag-star.svg";
 import cardStars from "../assets/img/2026/card-stars.svg";
 import verseStars from "../assets/img/2026/verse-stars.svg";
 import eventDeco from "../assets/img/2026/event-deco.svg";
+import preview1 from "../assets/img/2026/preview/preview-1.png";
+import preview2 from "../assets/img/2026/preview/preview-2.png";
+import preview3 from "../assets/img/2026/preview/preview-3.png";
+import preview4 from "../assets/img/2026/preview/preview-4.png";
+import preview5 from "../assets/img/2026/preview/preview-5.png";
+import preview6 from "../assets/img/2026/preview/preview-6.png";
 
 /* 피그마 Main(1440) 기준 — 크기·위치 동일 비율로 환산 */
 const d = (px) => `calc(${px} / 1440 * 100vw)`;
+
+const fadeUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const Page = styled.div`
   position: relative;
@@ -117,12 +134,16 @@ const Hero = styled(Section)`
     letter-spacing: -0.8px;
     text-align: center;
     margin: 0;
+    opacity: 0;
+    animation: ${fadeUp} 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
   }
 
   .hero-logo {
     width: min(780px, 90vw);
     height: auto;
     display: block;
+    opacity: 0;
+    animation: ${fadeUp} 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
   }
 
   .verse-wrap {
@@ -130,6 +151,8 @@ const Hero = styled(Section)`
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    opacity: 0;
+    animation: ${fadeUp} 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
   }
 
   .verse-stars {
@@ -368,6 +391,15 @@ const ImageCard = styled.div`
     height: 280px;
     background: #f5f5f5;
     border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom center;
+    display: block;
   }
 
   .caption {
@@ -380,11 +412,13 @@ const ImageCard = styled.div`
 
   .caption p {
     margin: 0;
-    font-family: "Nanum Pen Script", "Gaegu", cursive;
-    font-size: 26px;
-    line-height: 1.4;
-    letter-spacing: -0.5px;
+    font-family: "Nanum NeuRisNeuRisCe", cursive;
+    font-size: 28px;
+    line-height: 1.5;
+    letter-spacing: -0.56px;
     color: #000;
+    word-break: keep-all;
+    white-space: nowrap;
   }
 
   .caption img {
@@ -406,6 +440,7 @@ const ImageCard = styled.div`
 
     .caption p {
       font-size: 22px;
+      white-space: normal;
     }
   }
 `;
@@ -561,18 +596,19 @@ const Timetable = styled(Section)`
   .row-title {
     margin: 0;
     color: #5170ff;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    line-height: 34px;
+    line-height: 28px;
   }
 
   .row-desc {
     margin: 0;
     color: #5d606d;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
-    line-height: 34px;
+    line-height: 28px;
     letter-spacing: -0.5px;
+    word-break: keep-all;
   }
 
   @media (max-width: 1024px) {
@@ -590,14 +626,14 @@ const Timetable = styled(Section)`
     }
 
     .row {
-      grid-template-columns: 80px 1fr;
+      grid-template-columns: 72px 1fr;
       gap: 12px;
     }
 
     .row-title,
     .row-desc {
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 14px;
+      line-height: 1.55;
     }
   }
 `;
@@ -670,12 +706,36 @@ const Videos = styled(Section)`
 `;
 
 const previewCards = [
-  { caption: "짝꿍과 함께 맞잡은 두 손", rotate: "5deg" },
-  { caption: "즐거운 가족 네트워킹 시간!", rotate: "-4.3deg" },
-  { caption: "지쳐도 괜찮아, 응원의 시간", rotate: "-5.7deg" },
-  { caption: "무더운 여름도 함께라면 괜찮아", rotate: "-1.5deg" },
-  { caption: "결승점에 골인하는 빛나는 순간!", rotate: "3.4deg" },
-  { caption: "우리의 웃음으로 만들어가는 사마톤", rotate: "-9.8deg" },
+  {
+    caption: "짝꿍과 함께 맞잡은 두 손",
+    image: preview1,
+    rotate: "5deg",
+  },
+  {
+    caption: "즐거운 가족 네트워킹 시간!",
+    image: preview2,
+    rotate: "-4.3deg",
+  },
+  {
+    caption: "맛있는 식사로 충전하는 시간!",
+    image: preview3,
+    rotate: "-5.7deg",
+  },
+  {
+    caption: "무더운 날씨도 함께라면 괜찮아",
+    image: preview4,
+    rotate: "-1.5deg",
+  },
+  {
+    caption: "실내 프로그램도 즐겁게 즐기기",
+    image: preview5,
+    rotate: "3.4deg",
+  },
+  {
+    caption: "우리의 웃음으로 만들어가는 사마톤",
+    image: preview6,
+    rotate: "-9.8deg",
+  },
 ];
 
 const programs = [
@@ -721,7 +781,9 @@ const ThisYear2026 = () => {
         <Deco className="deco-right" src={decoHeroRight} alt="" />
         <Deco className="deco-bottom-left" src={decoMid} alt="" />
         <div className="hero-inner">
-          <p className="theme">각자의 모습으로, 같은 길을</p>
+          <p className="theme" id="hero-theme-2026">
+            각자의 모습으로, 같은 길을
+          </p>
           <img className="hero-logo" src={heroLogo} alt="사랑의 마라톤" />
           <div className="verse-wrap">
             <img className="verse-stars" src={verseStars} alt="" />
@@ -770,7 +832,9 @@ const ThisYear2026 = () => {
         <div className="grid">
           {previewCards.map((card) => (
             <ImageCard key={card.caption} $rotate={card.rotate}>
-              <div className="thumb" />
+              <div className="thumb">
+                <img src={card.image} alt={card.caption} />
+              </div>
               <div className="caption">
                 <p>{card.caption}</p>
                 <img src={cardStars} alt="" />

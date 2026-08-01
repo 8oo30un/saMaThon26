@@ -84,16 +84,17 @@ const MenuList = styled.nav`
     letter-spacing: -0.5px;
     line-height: 1;
     white-space: nowrap;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease, color 0.2s ease;
     text-shadow: ${(props) =>
       props.$light ? "0 1px 2px rgba(0, 0, 0, 0.35)" : "none"};
 
     &:hover {
-      color: #5170ff;
+      opacity: 0.6;
     }
 
     &.active {
-      color: #5170ff;
+      color: ${(props) => (props.$light ? "#fff" : "#5170ff")};
+      opacity: 1;
     }
   }
 
@@ -120,6 +121,16 @@ const MenuList = styled.nav`
       font-size: 18px;
       color: #000;
       text-shadow: none;
+
+      &:hover {
+        opacity: 0.6;
+        color: #000;
+      }
+
+      &.active {
+        color: #5170ff;
+        opacity: 1;
+      }
     }
   }
 `;
@@ -267,8 +278,15 @@ function Navbar() {
         // 히어로(동영상): 투명+흰 로고 / 아래 사진 카드 구간부터: 불투명+파란 로고
         const heroEnd = Math.max(window.innerHeight - 84, 0);
         setIsScrolled(window.scrollY >= heroEnd);
+      } else if (location.pathname === "/2026") {
+        // ‘각자의 모습으로, 같은 길을’이 헤더에 닿으면 흰 배경
+        const theme = document.getElementById("hero-theme-2026");
+        if (theme) {
+          setIsScrolled(theme.getBoundingClientRect().top <= 84);
+        } else {
+          setIsScrolled(window.scrollY > 140);
+        }
       } else {
-        // /2026 등: 인사말 섹션부터 흰색 배경
         setIsScrolled(window.scrollY > 700);
       }
     };
