@@ -3,19 +3,20 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar2";
 import Footer from "../components/Footer";
-function ApplyPage() {
-  const ApplyPage = styled.div`
-    width: 100%;
-    height: 100%;
-    background-color: black;
-  `;
 
+const PageWrapper = styled.div`
+  width: 100%;
+  min-height: 100%;
+  background-color: #ffffff;
+`;
+
+function ApplyPage() {
   return (
-    <ApplyPage>
+    <PageWrapper>
       <Navbar />
       <Apply />
       <Footer />
-    </ApplyPage>
+    </PageWrapper>
   );
 }
 

@@ -257,12 +257,11 @@ function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isApply = location.pathname === "/apply";
-  const isDarkHero = isHome || isApply;
 
   useEffect(() => {
     const onScroll = () => {
       if (isApply) {
-        // /apply: 스크롤해도 항상 투명 헤더 유지
+        // /apply: 흰 배경 위 투명 헤더(파란 로고·검정 메뉴) 유지
         setIsScrolled(false);
       } else if (isHome) {
         // 히어로(동영상): 투명+흰 로고 / 아래 사진 카드 구간부터: 불투명+파란 로고
@@ -287,11 +286,10 @@ function Navbar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // /apply: 스크롤·메뉴 열림과 무관하게 투명 + 흰 로고/메뉴 유지
+  // /apply: 투명 + 파란 로고 + 검정 메뉴 (신청하기 버튼 숨김)
   const opaque = isApply ? false : isScrolled || isOpen;
-  const lightMenu = isApply || (isDarkHero && !opaque);
-  const logoSrc =
-    isApply || (isDarkHero && !opaque) ? headerLogoWhite : headerLogo;
+  const lightMenu = isHome && !opaque;
+  const logoSrc = isHome && !opaque ? headerLogoWhite : headerLogo;
 
   return (
     <Header $isScrolled={opaque}>
@@ -319,7 +317,9 @@ function Navbar() {
               {item.label}
             </Link>
           ))}
-          <MobileApplyLink to="/apply">신청하기</MobileApplyLink>
+          {!isApply && (
+            <MobileApplyLink to="/apply">신청하기</MobileApplyLink>
+          )}
         </MenuList>
 
         {!isApply && (
