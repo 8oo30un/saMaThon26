@@ -16,6 +16,7 @@ import preview3 from "../assets/img/2026/preview/preview-3.png";
 import preview4 from "../assets/img/2026/preview/preview-4.png";
 import preview5 from "../assets/img/2026/preview/preview-5.png";
 import preview6 from "../assets/img/2026/preview/preview-6.png";
+import introMain from "../assets/img/2026/intro-main.png";
 
 /* 피그마 Main(1440) 기준 — 크기·위치 동일 비율로 환산 */
 const d = (px) => `calc(${px} / 1440 * 100vw)`;
@@ -34,17 +35,22 @@ const fadeUp = keyframes`
 const Page = styled.div`
   position: relative;
   width: 100%;
+  max-width: 100%;
   background: #fff;
   color: #000;
   font-family: Pretendard, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   overflow-y: visible;
+  box-sizing: border-box;
 `;
 
 const Section = styled.section`
   position: relative;
   width: 100%;
-  overflow: visible;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
+  overflow-y: visible;
 `;
 
 /* 피그마 boolean Union 데코: rotate(180) + scaleY(-1) */
@@ -230,23 +236,21 @@ const Intro = styled(Section)`
     color: #6d7183;
   }
 
-  .image-placeholder {
+  .intro-image {
     width: min(580px, 100%);
     height: 650px;
     background: #eaecf5;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     flex-shrink: 0;
   }
 
-  .image-placeholder span {
-    color: #646778;
-    opacity: 0.2;
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: -1.8px;
+  .intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom center;
+    display: block;
   }
 
   @media (max-width: 1024px) {
@@ -266,13 +270,9 @@ const Intro = styled(Section)`
       font-size: 16px;
     }
 
-    .image-placeholder {
+    .intro-image {
       width: 100%;
       height: 360px;
-    }
-
-    .image-placeholder span {
-      font-size: 28px;
     }
   }
 `;
@@ -462,7 +462,9 @@ const EventInfo = styled(Section)`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -40%);
-    width: min(1260px, 95vw);
+    width: min(1260px, 100%);
+    max-width: 100%;
+    height: auto;
     pointer-events: none;
     z-index: 0;
   }
@@ -470,16 +472,22 @@ const EventInfo = styled(Section)`
   .inner {
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 80px;
+    box-sizing: border-box;
   }
 
   .body {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .item {
@@ -505,10 +513,16 @@ const EventInfo = styled(Section)`
     line-height: 1.5;
     letter-spacing: -0.56px;
     white-space: pre-line;
+    word-break: keep-all;
   }
 
   @media (max-width: 768px) {
-    padding: 80px 20px;
+    padding: 80px 24px;
+
+    .bg {
+      width: min(640px, 140%);
+      opacity: 0.7;
+    }
 
     .inner {
       gap: 48px;
@@ -523,8 +537,6 @@ const EventInfo = styled(Section)`
 
 const Timetable = styled(Section)`
   padding: 100px 24px 120px;
-  overflow-x: hidden;
-  overflow-y: visible;
 
   /* 피그마 1001:297 — 우측 파란 별 (left: 81.25%) */
   .deco-1 {
@@ -538,7 +550,9 @@ const Timetable = styled(Section)`
     position: relative;
     z-index: 1;
     max-width: 1256px;
+    width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .title {
@@ -550,6 +564,9 @@ const Timetable = styled(Section)`
     display: flex;
     gap: 60px;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* 이미지 기준 앵커 — 피그마에서 별이 이미지 좌하단에 걸침 */
@@ -557,6 +574,8 @@ const Timetable = styled(Section)`
     position: relative;
     flex-shrink: 0;
     width: min(580px, 100%);
+    max-width: 100%;
+    overflow: hidden;
   }
 
   /* 피그마 1001:337: 이미지(x:92) 대비 left -55.19 / bottom -77.6 */
@@ -590,6 +609,7 @@ const Timetable = styled(Section)`
 
   .programs {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -597,7 +617,7 @@ const Timetable = styled(Section)`
 
   .row {
     display: grid;
-    grid-template-columns: 90px 1fr;
+    grid-template-columns: 90px minmax(0, 1fr);
     gap: 20px;
     align-items: start;
   }
@@ -621,6 +641,13 @@ const Timetable = styled(Section)`
   }
 
   @media (max-width: 1024px) {
+    padding: 80px 24px 100px;
+
+    .deco-1,
+    .deco-2 {
+      display: none;
+    }
+
     .content {
       flex-direction: column;
       gap: 40px;
@@ -635,7 +662,7 @@ const Timetable = styled(Section)`
     }
 
     .row {
-      grid-template-columns: 72px 1fr;
+      grid-template-columns: 72px minmax(0, 1fr);
       gap: 12px;
     }
 
@@ -649,7 +676,6 @@ const Timetable = styled(Section)`
 
 const Videos = styled(Section)`
   padding: 100px 24px 120px;
-  overflow: hidden;
 
   /* 피그마 1001:343 / 348 / 353 — 전부 초록 별 (#8BD348) */
   .deco-1 {
@@ -675,26 +701,33 @@ const Videos = styled(Section)`
 
   .title {
     margin-bottom: 60px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .list {
     position: relative;
     z-index: 1;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    box-sizing: border-box;
   }
 
   .video {
     position: relative;
     width: 100%;
+    max-width: 100%;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     border-radius: 16px;
     background: #111;
+    box-sizing: border-box;
   }
 
   .video iframe {
@@ -702,11 +735,18 @@ const Videos = styled(Section)`
     inset: 0;
     width: 100%;
     height: 100%;
+    max-width: 100%;
     border: 0;
   }
 
   @media (max-width: 768px) {
-    padding: 80px 16px 100px;
+    padding: 80px 24px 100px;
+
+    .deco-1,
+    .deco-2,
+    .deco-3 {
+      display: none;
+    }
 
     .title {
       margin-bottom: 36px;
@@ -825,8 +865,8 @@ const ThisYear2026 = () => {
               </p>
             </div>
           </div>
-          <div className="image-placeholder">
-            <span>메인 소개 이미지</span>
+          <div className="intro-image">
+            <img src={introMain} alt="사랑의 마라톤 메인 소개" />
           </div>
         </div>
       </Intro>

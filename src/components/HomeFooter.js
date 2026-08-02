@@ -102,7 +102,7 @@ function HomeFooter() {
             <FaYoutube />
           </a>
         </SocialIcons>
-        <ContactButton href="mailto:2025lovemarathon@gmail.com">
+        <ContactButton href="mailto:26lovemarathon@gmail.com">
           문의/후원 Email
         </ContactButton>
       </FooterRight>

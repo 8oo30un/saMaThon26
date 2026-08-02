@@ -43,7 +43,7 @@ const CARDS = [
     ),
   },
   {
-    href: "https://forms.gle/92KzL5qdfT6dxzkK8",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSdungbOar-wradcnKKzFuNB3QuU2fQMfDvVGGg2w6pNJCaErA/formResponse",
     image: cardStudent,
     tag: "한동대학교 학생 신청",
     tagColor: "#7dbf40",

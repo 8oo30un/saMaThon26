@@ -120,7 +120,7 @@ function Footer() {
               <p>담당  |  한동대학교 사랑의 마라톤 TFT</p>
               <p>문의  |  054-260-1874</p>
             </Info>
-            <EmailButton href="mailto:2025lovemarathon@gmail.com">
+            <EmailButton href="mailto:26lovemarathon@gmail.com">
               문의 / 후원 Email
             </EmailButton>
           </InfoRow>
