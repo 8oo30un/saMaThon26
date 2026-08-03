@@ -969,8 +969,8 @@ const ThisYear2026 = () => {
         <div className="list">
           <div className="video">
             <iframe
-              src="https://www.youtube.com/embed/QNCErAy7jvA"
-              title="15년간 이어져 오는 사랑 그 잡채! 한 마음으로 함께 모인 날, 사랑의 마라톤"
+              src="https://www.youtube.com/embed/Jtwwh_6Sfzo"
+              title="제17회 사랑의 마라톤"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
@@ -978,8 +978,8 @@ const ThisYear2026 = () => {
           </div>
           <div className="video">
             <iframe
-              src="https://www.youtube.com/embed/dHgcbFOYtB0"
-              title="함께 마음을 맞추고, 발걸음을 맞추는 16번째 사랑의 마라톤"
+              src="https://www.youtube.com/embed/QNCErAy7jvA"
+              title="제16회 사랑의 마라톤"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
