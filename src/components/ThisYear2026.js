@@ -17,6 +17,8 @@ import preview4 from "../assets/img/2026/preview/preview-4.png";
 import preview5 from "../assets/img/2026/preview/preview-5.png";
 import preview6 from "../assets/img/2026/preview/preview-6.png";
 import introMain from "../assets/img/2026/intro-main.png";
+import timetableDesktop from "../assets/img/2026/timetable/timetable-desktop.png";
+import timetablePhone from "../assets/img/2026/timetable/timetable-phone.png";
 
 /* 피그마 Main(1440) 기준 — 크기·위치 동일 비율로 환산 */
 const d = (px) => `calc(${px} / 1440 * 100vw)`;
@@ -588,23 +590,27 @@ const Timetable = styled(Section)`
     z-index: 0;
   }
 
-  .image-placeholder {
+  .timetable-image {
     position: relative;
     z-index: 1;
     width: 100%;
-    height: 497px;
-    background: #eaecf5;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, #d8ddf1 0%, #eaecf5 100%);
   }
 
-  .image-placeholder span {
-    color: #646778;
-    opacity: 0.2;
-    font-size: 40px;
-    font-weight: 600;
+  .timetable-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .timetable-image .desktop {
+    display: block;
+  }
+
+  .timetable-image .phone {
+    display: none;
   }
 
   .programs {
@@ -655,10 +661,15 @@ const Timetable = styled(Section)`
 
     .image-wrap {
       width: 100%;
+      overflow: visible;
     }
 
-    .image-placeholder {
-      height: 280px;
+    .timetable-image .desktop {
+      display: none;
+    }
+
+    .timetable-image .phone {
+      display: block;
     }
 
     .row {
@@ -923,8 +934,17 @@ const ThisYear2026 = () => {
           <div className="content">
             <div className="image-wrap">
               <Deco className="deco-2" src={decoStarBlue} alt="" />
-              <div className="image-placeholder">
-                <span>타임테이블 이미지</span>
+              <div className="timetable-image">
+                <img
+                  className="desktop"
+                  src={timetableDesktop}
+                  alt="2026 사랑의 마라톤 일정 타임테이블"
+                />
+                <img
+                  className="phone"
+                  src={timetablePhone}
+                  alt="2026 사랑의 마라톤 일정 타임테이블"
+                />
               </div>
             </div>
             <div className="programs">
