@@ -22,17 +22,27 @@ const Header = styled.header`
   right: 0;
   display: flex;
   flex-direction: column;
+  overflow: visible;
+  /* Safari: fixed + 조상 overflow/clip 이슈 완화 */
+  transform: translateZ(0);
   background-color: ${(props) =>
     props.$isScrolled ? "rgba(255, 255, 255, 0.92)" : "transparent"};
+  -webkit-backdrop-filter: ${(props) =>
+    props.$isScrolled ? "blur(12px)" : "none"};
   backdrop-filter: ${(props) => (props.$isScrolled ? "blur(12px)" : "none")};
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease,
     box-shadow 0.3s ease;
   box-shadow: ${(props) =>
     props.$isScrolled ? "0 1px 0 rgba(0, 0, 0, 0.04)" : "none"};
+  /* 노치/툴바 등으로 상단이 가려지는 Safari 환경 대응 */
+  padding-top: env(safe-area-inset-top, 0px);
 `;
 
 const HeaderInner = styled.div`
-  height: 84px;
+  /* height 고정(84) + padding(22*2)이면 콘텐츠 영역이 40px.
+     신청 버튼(~40px)과 거의 동일해 Safari 폰트/서브픽셀에서 상단이 잘림 */
+  min-height: 84px;
+  height: auto;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -42,9 +52,11 @@ const HeaderInner = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  overflow: visible;
 
   @media (max-width: 768px) {
-    height: 70px;
+    min-height: 70px;
+    height: auto;
     padding: 16px 20px;
   }
 `;

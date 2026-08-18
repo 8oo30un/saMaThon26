@@ -60,11 +60,33 @@ const CARDS = [
   },
 ];
 
-/* 피그마 Hero 프레임(1440) 기준 배치 */
+/*
+ * ============================================================
+ * /apply 워터마크(초록 별) 위치 조정 가이드
+ * ============================================================
+ * 별 3개가 Stage(최대 1440px 박스) 기준 absolute로 붙습니다.
+ *
+ *   deco-top   → 화면 위쪽 / 타이틀 뒤
+ *   deco-left  → 카드 뒤쪽 중앙~아래
+ *   deco-right → 오른쪽 바깥에서 살짝 비침
+ *
+ * 조정할 때 주로 바꾸는 값:
+ *   left / top     → 위치 (숫자↑ = 오른쪽/아래로 이동)
+ *   width / height → 크기 (둘 다 같은 숫자 유지 권장)
+ *   opacity        → 진하기 (SVG에 이미 0.1이 있어서 보통 1 유지)
+ *
+ * d(숫자) = 1440 디자인 기준 px를 화면 너비에 비례 환산
+ *   예) d(100) ≈ 화면이 1440일 때 100px
+ *   고정 px를 쓰려면 d(...) 대신 그냥 100px 처럼 적어도 됨
+ * ============================================================
+ */
+const d = (px) => `calc(${px} / 1440 * 100vw)`;
+
 const Page = styled.section`
   width: 100%;
   background: #ffffff;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 `;
 
 const Stage = styled.div`
@@ -78,6 +100,7 @@ const Stage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 
   @media (max-width: 1100px) {
     padding: 140px 40px 64px;
@@ -94,74 +117,104 @@ const Deco = styled.img`
   z-index: 0;
   user-select: none;
   display: block;
-  opacity: 0;
+  opacity: 1; /* 더 진하게: 1 초과 불가 / 더 연하게: 0.5 등으로 ↓ */
+  transform: rotate(180deg) scaleY(-1); /* 피그마 Union 방향 — 보통 건드리지 않음 */
+  transform-origin: center center;
 
+  /*
+   * [1] deco-top — 상단 워터마크
+   * 위치: 타이틀("2026 사랑의 마라톤 신청하기") 뒤 / 화면 위쪽
+   * 조정:
+   *   left  ↑ → 오른쪽으로   ↓ → 왼쪽으로
+   *   top   ↑ → 아래로       ↓(음수) → 위로 (헤더 쪽으로)
+   *   width/height ↑ → 크게
+   */
   &.deco-top {
-    width: 432.53px;
-    height: 432.53px;
-    left: 90px;
-    top: -195px;
+    width: ${d(432.533)}; /* 크기 */
+    height: ${d(432.533)}; /* 크기 (width와 동일 권장) */
+    left: ${d(170.219)}; /* 가로 위치 */
+    top: ${d(-190.975)}; /* 세로 위치 (음수 = Stage 위쪽으로 삐져나감) */
   }
 
+  /*
+   * [2] deco-left — 중앙/하단 워터마크
+   * 위치: 신청 카드들 뒤 (페이지 중앙~아래)
+   * 조정:
+   *   left  ↑ → 오른쪽으로   ↓ → 왼쪽으로
+   *   top   ↑ → 아래로       ↓ → 위로
+   *   width/height ↑ → 크게
+   */
   &.deco-left {
-    width: 578.77px;
-    height: 578.77px;
-    left: -160px;
-    top: 427px;
+    width: ${d(470.768)}; /* 크기 */
+    height: ${d(470.768)}; /* 크기 (width와 동일 권장) */
+    left: ${d(-57.384)}; /* 가로 위치 */
+    top: ${d(357.418)}; /* 세로 위치 */
   }
 
+  /*
+   * [3] deco-right — 우측 워터마크
+   * 위치: 오른쪽 가장자리에서 살짝 보이는 별
+   * 조정:
+   *   left 의 75% / 37.36 숫자 변경
+   *     - 75% 를 70% 로 ↓ → 더 안쪽(왼쪽)으로
+   *     - 37.36 을 ↑ → 더 오른쪽으로
+   *   top ↑ → 아래로 / ↓ → 위로
+   *   또는 left: auto; right: -120px; 처럼 right 기준으로 바꿔도 됨
+   */
   &.deco-right {
-    width: 621.47px;
-    height: 621.47px;
-    left: 980px;
-    top: 105px;
+    width: ${d(621.473)}; /* 크기 */
+    height: ${d(621.473)}; /* 크기 (width와 동일 권장) */
+    left: calc(75% + ${d(47.36)}); /* 가로 위치 */
+    top: ${d(95.055)}; /* 세로 위치 */
   }
 
+  /* ----- 태블릿 (~1100px) : 아래 값만 따로 조정 ----- */
   @media (max-width: 1100px) {
     &.deco-top {
-      width: 300px;
+      width: 300px; /* 크기 */
       height: 300px;
-      left: 20px;
-      top: -120px;
+      left: 18%; /* 가로 */
+      top: -120px; /* 세로 */
     }
 
     &.deco-left {
       width: 360px;
       height: 360px;
-      left: -140px;
-      top: 360px;
+      left: 20%;
+      top: 55%;
     }
 
     &.deco-right {
       width: 380px;
       height: 380px;
       left: auto;
-      right: -120px;
-      top: 160px;
+      right: -140px; /* 오른쪽 기준 (음수 = 바깥으로) */
+      top: 120px;
     }
   }
 
+  /* ----- 모바일 (~900px) : 아래 값만 따로 조정 ----- */
   @media (max-width: 900px) {
     &.deco-top {
       width: 240px;
       height: 240px;
-      left: -20px;
+      left: 10%;
       top: -80px;
     }
 
     &.deco-left {
       width: 280px;
       height: 280px;
-      left: -100px;
+      left: -40px;
       top: auto;
-      bottom: -40px;
+      bottom: -20px; /* top 대신 하단 기준 */
     }
 
     &.deco-right {
       width: 260px;
       height: 260px;
       right: -80px;
-      top: 220px;
+      top: 200px;
     }
   }
 `;
@@ -344,6 +397,8 @@ function Apply() {
   return (
     <Page>
       <Stage>
+        {/* 워터마크 — 위치/크기는 파일 상단 Deco styled 주석에서 조정
+            deco-top: 상단 / deco-left: 중앙~하단 / deco-right: 우측 */}
         <Deco className="deco-top" src={decoTop} alt="" />
         <Deco className="deco-left" src={decoLeft} alt="" />
         <Deco className="deco-right" src={decoRight} alt="" />

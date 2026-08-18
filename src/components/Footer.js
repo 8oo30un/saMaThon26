@@ -2,6 +2,8 @@ import styled from "styled-components";
 import footerLogo from "../assets/img/2026/footer-logo.svg";
 
 const FooterRoot = styled.footer`
+  position: relative;
+  z-index: 2;
   background-color: #0e0e0f;
   color: #fff;
   width: 100%;

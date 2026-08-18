@@ -88,6 +88,16 @@ const Tag = styled.div`
   }
 `;
 
+/*
+ * ============================================================
+ * 히어로 워터마크 조정 가이드
+ * ============================================================
+ *   deco-left        → 좌측 상단
+ *   deco-right       → 우측
+ *   deco-bottom-left → 좌측 하단
+ * 조정: left / top / width / height  (↑ = 오른쪽·아래·크게)
+ * ============================================================
+ */
 const Hero = styled(Section)`
   position: relative;
   z-index: 0;
@@ -100,23 +110,23 @@ const Hero = styled(Section)`
   box-sizing: border-box;
   overflow: visible;
 
-  /* 피그마 1001:56 — 좌측 상단 초록 별 */
+  /* [1] deco-left — 좌측 상단 초록 별 */
   .deco-left {
-    width: ${d(432.533)};
+    width: ${d(432.533)}; /* 크기 */
     height: ${d(432.533)};
-    top: ${d(-194.77)};
-    left: calc(6.25% + ${d(66.69)});
+    top: ${d(-194.77)}; /* 세로 (음수=위로) */
+    left: calc(6.25% + ${d(66.69)}); /* 가로 */
   }
 
-  /* 피그마 1001:51 — 우측 중간 초록 별 */
+  /* [2] deco-right — 우측 초록 별 */
   .deco-right {
     width: ${d(621.473)};
     height: ${d(621.473)};
     top: ${d(105.26)};
-    left: calc(75% + ${d(37.36)});
+    left: calc(75% + ${d(7.36)});
   }
 
-  /* 피그마 1001:451 — 히어로 좌하단 초록 별 (left: -111.38, top: 427.63) */
+  /* [3] deco-bottom-left — 좌측 하단 초록 별 */
   .deco-bottom-left {
     width: ${d(578.768)};
     height: ${d(578.768)};
@@ -192,8 +202,22 @@ const Hero = styled(Section)`
   }
 `;
 
+/*
+ * ============================================================
+ * 인사말(Intro) 워터마크 조정 가이드 — 사진 위 별 2개
+ * ============================================================
+ *   img-deco-1 → 사진 왼쪽 위
+ *   img-deco-2 → 사진 오른쪽 아래 (밖으로 살짝 삐져나옴)
+ *
+ * 조정 값: left / top / width / height
+ *   left·top ↑ = 오른쪽·아래로 이동
+ *   width·height 는 같은 값으로 유지 권장
+ * d(px) = 1440 기준 비례 환산 / 고정이면 100px 처럼 직접 기입
+ * ============================================================
+ */
 const Intro = styled(Section)`
-  padding: 125px 24px 100px;
+  /* 피그마 Desktop 1029:439 — 텍스트 좌측 + 이미지 우측 */
+  padding: 125px 92px 100px;
   box-sizing: border-box;
   overflow: visible;
   position: relative;
@@ -203,10 +227,11 @@ const Intro = styled(Section)`
     position: relative;
     z-index: 1;
     max-width: 1210px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 80px;
   }
 
@@ -215,13 +240,23 @@ const Intro = styled(Section)`
     max-width: 497px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 60px;
+    text-align: left;
+  }
+
+  .content > div:first-child {
+    align-self: flex-start;
+    width: auto;
+    justify-content: flex-start;
   }
 
   .desc {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 100%;
+    text-align: left;
   }
 
   .desc p {
@@ -231,6 +266,7 @@ const Intro = styled(Section)`
     font-weight: 400;
     line-height: 1.9;
     letter-spacing: -0.56px;
+    text-align: left;
   }
 
   .desc strong {
@@ -239,15 +275,22 @@ const Intro = styled(Section)`
   }
 
   .intro-image {
+    position: relative;
     width: min(580px, 100%);
     height: 650px;
-    background: #eaecf5;
-    border-radius: 20px;
-    overflow: hidden;
     flex-shrink: 0;
+    overflow: visible; /* 별이 사진 밖으로 살짝 나오게 */
   }
 
-  .intro-image img {
+  .intro-image-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #eaecf5;
+  }
+
+  .intro-image-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -255,26 +298,121 @@ const Intro = styled(Section)`
     display: block;
   }
 
+  /* ----- Desktop: 사진 위 별 (피그마 1029:459 / 1029:464) ----- */
+  .img-deco-1 {
+    /* [1] 사진 왼쪽 위 — left↑오른쪽 / top↑아래 / width·height=크기 */
+    width: 227px;
+    height: 227px;
+    left: 176px;
+    top: 27px;
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0) invert(1); /* 사진 위 밝은 워터마크 */
+  }
+
+  .img-deco-2 {
+    /* [2] 사진 오른쪽 아래 — left↑오른쪽 / top↑아래 */
+    width: 403px;
+    height: 403px;
+    left: 390px;
+    top: 325px;
+    z-index: 2;
+    opacity: 0.55;
+    filter: brightness(0) invert(1);
+  }
+
+  /*
+   * 피그마 Tablet 1066:1127 (810)
+   * 세로 스택: 태그(중앙) → 본문(좌측) → 사진
+   * padding 40 / 130, 본문↔사진 gap 80, 본문 글자 24px
+   */
   @media (max-width: 1024px) {
-    padding: 80px 20px;
+    padding: 130px 40px;
 
     .inner {
       flex-direction: column;
-      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      max-width: 730px;
     }
 
     .content {
       max-width: 100%;
+      width: 100%;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .content > div:first-child {
+      align-self: center; /* 태블릿: 인사말 태그 중앙 */
+    }
+
+    .desc p {
+      font-size: 24px;
+      letter-spacing: -0.71px;
+    }
+
+    .intro-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 730 / 818;
+    }
+
+    .intro-image-frame {
+      border-radius: 25px;
+    }
+
+    /* ----- Tablet: 사진 위 별 (피그마 1066:1147 / 1066:1152) ----- */
+    .img-deco-1 {
+      /* [1] 왼쪽 위 — %는 사진 박스 기준 */
+      width: 39%;
+      height: auto;
+      aspect-ratio: 1;
+      left: -9%;
+      top: 4%;
+    }
+
+    .img-deco-2 {
+      /* [2] 오른쪽 아래 */
+      width: 69%;
+      height: auto;
+      aspect-ratio: 1;
+      left: 53%;
+      top: 50%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 20px;
+
+    .inner {
+      gap: 40px;
+    }
+
+    .content {
       gap: 32px;
     }
 
     .desc p {
       font-size: 16px;
+      letter-spacing: -0.56px;
     }
 
-    .intro-image {
-      width: 100%;
-      height: 360px;
+    .intro-image-frame {
+      border-radius: 20px;
+    }
+
+    .img-deco-1 {
+      width: 42%;
+      left: -8%;
+      top: 3%;
+    }
+
+    .img-deco-2 {
+      width: 72%;
+      left: 48%;
+      top: 48%;
     }
   }
 `;
@@ -286,25 +424,31 @@ const Preview = styled(Section)`
   overflow: visible;
   box-sizing: border-box;
 
-  /* 피그마 1012:2517 / 2522 / 2527 — 데코 위치 조정 */
+  /*
+   * 미리보기 워터마크 (파란 별 3개) — left/top/width/height 로 직접 조정
+   *   deco-1 왼쪽 위 / deco-2 오른쪽 / deco-3 왼쪽 아래
+   */
   .deco-1 {
-    width: ${d(463.068)};
+    /* [1] 왼쪽 위 */
+    width: ${d(463.068)}; /* 크기 */
     height: ${d(463.068)};
-    top: calc(${d(71.08)} - 40px);
-    left: calc(${d(-62.35)} + 60px);
+    top: calc(${d(71.08)} - 40px); /* 세로 */
+    left: calc(${d(-62.35)} + 60px); /* 가로 */
   }
 
   .deco-2 {
+    /* [2] 오른쪽 */
     width: ${d(463.068)};
     height: ${d(463.068)};
     top: calc(${d(438.01)} - 45px);
-    left: calc(75% + ${d(52.55)} + 60px);
+    left: calc(75% + ${d(-58.55)} + 60px);
   }
 
   .deco-3 {
+    /* [3] 왼쪽 아래 */
     width: ${d(463.068)};
     height: ${d(463.068)};
-    top: calc(${d(1004.15)} - 32px);
+    top: calc(${d(974.15)} - 32px);
     left: calc(12.5% + ${d(88.65)} + 41px);
   }
 
@@ -540,12 +684,16 @@ const EventInfo = styled(Section)`
 const Timetable = styled(Section)`
   padding: 100px 24px 120px;
 
-  /* 피그마 1001:297 — 우측 파란 별 (left: 81.25%) */
+  /*
+   * 타임테이블 워터마크 (파란 별) — left/top/width/height 로 직접 조정
+   *   deco-1 섹션 우측 / deco-2 이미지 좌하단(.image-wrap 기준)
+   */
   .deco-1 {
-    width: ${d(226)};
+    /* [1] 우측 별 */
+    width: ${d(226)}; /* 크기 */
     height: ${d(226)};
-    top: ${d(196)};
-    left: 81.25%;
+    top: ${d(108)}; /* 세로 */
+    left: 75.25%; /* 가로 (%도 가능) */
   }
 
   .inner {
@@ -571,23 +719,34 @@ const Timetable = styled(Section)`
     box-sizing: border-box;
   }
 
-  /* 이미지 기준 앵커 — 피그마에서 별이 이미지 좌하단에 걸침 */
+  /*
+   * 이미지 래퍼
+   * - overflow: visible 필수 (별이 이미지 밖으로 살짝 나옴)
+   * - hidden 이면 deco-2 가 전부 잘려서 안 보임
+   */
   .image-wrap {
     position: relative;
     flex-shrink: 0;
     width: min(580px, 100%);
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
 
-  /* 피그마 1001:337: 이미지(x:92) 대비 left -55.19 / bottom -77.6 */
+  /*
+   * [2] deco-2 — 타임테이블 이미지 좌하단 (.image-wrap 기준)
+   * 피그마 1029:644 → 이미지(x:92) 대비 left:103 / bottom:-77.6
+   *
+   * 조정:
+   *   left↑ = 오른쪽 / bottom↑(값 커짐) = 위로 / width·height = 크기
+   *   z-index 는 이미지(1)보다 커야 사진 위에 보임 (지금은 2)
+   */
   .deco-2 {
-    width: ${d(158.192)};
+    width: ${d(158.192)}; /* 크기 */
     height: ${d(158.192)};
-    left: ${d(-55.19)};
-    bottom: ${d(-77.6)};
+    left: ${d(-60)}; /* 가로 — 피그마 absolute 195 - 이미지 92 */
+    bottom: ${d(-74.6)}; /* 세로 — 이미지 아래로 77.6 걸침 */
     top: auto;
-    z-index: 0;
+    z-index: 2; /* 1 이하면 timetable-image 뒤로 가려짐 */
   }
 
   .timetable-image {
@@ -686,27 +845,47 @@ const Timetable = styled(Section)`
 `;
 
 const Videos = styled(Section)`
-  padding: 100px 24px 120px;
+  /* 피그마 Section 1029:649 — tag y:120, 하단 여백 ~180, 높이 1812 */
+  padding: 120px 24px 180px;
+  overflow: visible;
 
-  /* 피그마 1001:343 / 348 / 353 — 전부 초록 별 (#8BD348) */
+  /*
+   * 영상 섹션 워터마크 (초록 별 3개) — left/top/width/height 로 직접 조정
+   *   deco-1 오른쪽 위 / deco-2 왼쪽 중간 / deco-3 오른쪽 아래(bottom:0)
+   * 주의: deco-3 는 top 대신 bottom 사용 → 푸터와 안 겹치게
+   */
   .deco-1 {
-    width: ${d(396.572)};
+    /* [1] 오른쪽 위 */
+    width: ${d(396.572)}; /* 크기 */
     height: ${d(396.572)};
-    top: ${d(25.71)};
-    left: calc(75% + ${d(41.71)});
+    top: ${d(-5.71)}; /* 세로 */
+    left: calc(75% + ${d(41.71)}); /* 가로 */
   }
 
   .deco-2 {
-    width: ${d(359.95)};
+    /*
+     * [2] 왼쪽 중간 (두 영상 사이) — 왼쪽 가장자리에서 반쯤 걸침
+     *
+     * 안 보이던 이유:
+     *   left: 234 이면 별 전체가 max-width:1200 영상 리스트(.list z-index:1) 안으로 들어가
+     *   z-index:0 인 별이 영상에 완전히 가려짐.
+     *   → 왼쪽(음수~작은 값)으로 빼서 영상 바깥/사이로 보이게 함
+     *
+     * 조정: left↑오른쪽 / top↑아래 / width·height=크기
+     */
+    width: ${d(359.95)}; /* 크기 */
     height: ${d(359.95)};
-    top: ${d(747.9)};
-    left: ${d(-125.8)};
+    top: 39%; /* 세로 — 두 영상 사이쯤 (↑면 아래) */
+    left: ${d(-110)}; /* 가로 — 음수여야 왼쪽 끝에서 걸침 */
+    z-index: 0; /* 영상(.list=1) 뒤. 왼쪽 밖으로 나온 부분만 보임 */
   }
 
   .deco-3 {
+    /* [3] 오른쪽 아래 — bottom 기준으로 푸터 침범 방지 */
     width: ${d(278.681)};
     height: ${d(278.681)};
-    top: ${d(1533.32)};
+    top: auto;
+    bottom: 0; /* 0=섹션 하단 정렬 / 숫자↑=위로 */
     left: calc(81.25% + ${d(10.66)});
   }
 
@@ -877,7 +1056,12 @@ const ThisYear2026 = () => {
             </div>
           </div>
           <div className="intro-image">
-            <img src={introMain} alt="사랑의 마라톤 메인 소개" />
+            <div className="intro-image-frame">
+              <img src={introMain} alt="사랑의 마라톤 메인 소개" />
+            </div>
+            {/* 사진 위 별 — 위치는 Intro styled .img-deco-1/2 주석에서 조정 */}
+            <Deco className="img-deco-1" src={decoStarGreen} alt="" />
+            <Deco className="img-deco-2" src={decoStarGreen} alt="" />
           </div>
         </div>
       </Intro>
