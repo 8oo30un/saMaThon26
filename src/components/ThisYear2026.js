@@ -5,6 +5,7 @@ import decoHeroLeft from "../assets/img/2026/deco-hero-left.svg";
 import decoHeroRight from "../assets/img/2026/deco-hero-right.svg";
 import decoMid from "../assets/img/2026/deco-mid.svg";
 import decoStarBlue from "../assets/img/2026/deco-star-blue.svg";
+import decoStarBlueTt from "../assets/img/2026/deco-star-blue-tt.svg";
 import decoStarGreen from "../assets/img/2026/deco-star-green.svg";
 import tagStar from "../assets/img/2026/tag-star.svg";
 import cardStars from "../assets/img/2026/card-stars.svg";
@@ -425,31 +426,32 @@ const Preview = styled(Section)`
   box-sizing: border-box;
 
   /*
-   * 미리보기 워터마크 (파란 별 3개) — left/top/width/height 로 직접 조정
+   * 미리보기 워터마크 (파란 Exclude 별 3개) — 피그마 1072:1251/1253/1255
+   * 기존 sharp Union 대신 둥근 끝 Exclude 실루엣(deco-star-blue.svg)
    *   deco-1 왼쪽 위 / deco-2 오른쪽 / deco-3 왼쪽 아래
    */
   .deco-1 {
-    /* [1] 왼쪽 위 */
-    width: ${d(463.068)}; /* 크기 */
-    height: ${d(463.068)};
-    top: calc(${d(71.08)} - 40px); /* 세로 */
-    left: calc(${d(-62.35)} + 60px); /* 가로 */
+    /* [1] 왼쪽 위 — 1072:1251 */
+    width: ${d(478.709)};
+    height: ${d(478.709)};
+    top: calc(${d(63.263)} - 40px);
+    left: calc(${d(-70.168)} + 60px);
   }
 
   .deco-2 {
-    /* [2] 오른쪽 */
-    width: ${d(463.068)};
-    height: ${d(463.068)};
-    top: calc(${d(438.01)} - 45px);
-    left: calc(75% + ${d(-58.55)} + 60px);
+    /* [2] 오른쪽 — 1072:1253 */
+    width: ${d(478.709)};
+    height: ${d(478.709)};
+    top: calc(${d(430.193)} - 45px);
+    left: calc(75% + ${d(-55.274)} + 60px);
   }
 
   .deco-3 {
-    /* [3] 왼쪽 아래 */
-    width: ${d(463.068)};
-    height: ${d(463.068)};
-    top: calc(${d(974.15)} - 32px);
-    left: calc(12.5% + ${d(88.65)} + 41px);
+    /* [3] 왼쪽 아래 — 1072:1255 */
+    width: ${d(478.709)};
+    height: ${d(478.709)};
+    top: calc(${d(996.334)} - 32px);
+    left: calc(12.5% + ${d(80.828)} + 41px);
   }
 
   .title {
@@ -685,15 +687,15 @@ const Timetable = styled(Section)`
   padding: 100px 24px 120px;
 
   /*
-   * 타임테이블 워터마크 (파란 별) — left/top/width/height 로 직접 조정
-   *   deco-1 섹션 우측 / deco-2 이미지 좌하단(.image-wrap 기준)
+   * 타임테이블 워터마크 (파란 Exclude 별) — deco-star-blue-tt.svg (opacity 0.05)
+   *   deco-1 섹션 우측 1072:1313 / deco-2 이미지 좌하단 1072:1401
    */
   .deco-1 {
-    /* [1] 우측 별 */
-    width: ${d(226)}; /* 크기 */
-    height: ${d(226)};
-    top: ${d(108)}; /* 세로 */
-    left: 75.25%; /* 가로 (%도 가능) */
+    /* [1] 우측 별 — 1072:1313 (236.211) */
+    width: ${d(236.211)};
+    height: ${d(236.211)};
+    top: ${d(190.895)};
+    left: 75.25%;
   }
 
   .inner {
@@ -734,19 +736,15 @@ const Timetable = styled(Section)`
 
   /*
    * [2] deco-2 — 타임테이블 이미지 좌하단 (.image-wrap 기준)
-   * 피그마 1029:644 → 이미지(x:92) 대비 left:103 / bottom:-77.6
-   *
-   * 조정:
-   *   left↑ = 오른쪽 / bottom↑(값 커짐) = 위로 / width·height = 크기
-   *   z-index 는 이미지(1)보다 커야 사진 위에 보임 (지금은 2)
+   * 피그마 1072:1401 Exclude 165.341
    */
   .deco-2 {
-    width: ${d(158.192)}; /* 크기 */
-    height: ${d(158.192)};
-    left: ${d(-60)}; /* 가로 — 피그마 absolute 195 - 이미지 92 */
-    bottom: ${d(-74.6)}; /* 세로 — 이미지 아래로 77.6 걸침 */
+    width: ${d(165.341)};
+    height: ${d(165.341)};
+    left: ${d(-58.767)}; /* 피그마 x 33.23 - 이미지 92 */
+    bottom: ${d(-81.17)}; /* 이미지 아래로 걸침 */
     top: auto;
-    z-index: 2; /* 1 이하면 timetable-image 뒤로 가려짐 */
+    z-index: 2;
   }
 
   .timetable-image {
@@ -790,19 +788,19 @@ const Timetable = styled(Section)`
   .row-title {
     margin: 0;
     color: #5170ff;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
-    line-height: 1.5;
-    letter-spacing: -0.56px;
+    line-height: 1.9;
+    letter-spacing: -0.5589px;
   }
 
   .row-desc {
     margin: 0;
-    color: #5d606d;
-    font-size: 22px;
+    color: #6d7183;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: -0.56px;
+    line-height: 1.9;
+    letter-spacing: -0.5589px;
     word-break: keep-all;
   }
 
@@ -835,6 +833,13 @@ const Timetable = styled(Section)`
     .row {
       grid-template-columns: 88px minmax(0, 1fr);
       gap: 16px;
+    }
+
+    .row-title,
+    .row-desc {
+      font-size: 22px;
+      line-height: 1.5;
+      letter-spacing: -0.56px;
     }
   }
 
@@ -1117,14 +1122,14 @@ const ThisYear2026 = () => {
       </EventInfo>
 
       <Timetable>
-        <Deco className="deco-1" src={decoStarBlue} alt="" />
+        <Deco className="deco-1" src={decoStarBlueTt} alt="" />
         <div className="inner">
           <div className="title">
             <SectionTag size="24px">일정 및 타임테이블</SectionTag>
           </div>
           <div className="content">
             <div className="image-wrap">
-              <Deco className="deco-2" src={decoStarBlue} alt="" />
+              <Deco className="deco-2" src={decoStarBlueTt} alt="" />
               <div className="timetable-image">
                 <img
                   className="desktop"
