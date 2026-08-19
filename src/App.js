@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./routes/HomePage";
 import Page2025 from "./routes/Page2025";
 import Page2026 from "./routes/Page2026";
@@ -17,6 +18,7 @@ import BannerPage from "./routes/BannerPage";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/2025" element={<Page2025 />}></Route>

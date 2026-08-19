@@ -790,18 +790,19 @@ const Timetable = styled(Section)`
   .row-title {
     margin: 0;
     color: #5170ff;
-    font-size: 15px;
+    font-size: 22px;
     font-weight: 700;
-    line-height: 28px;
+    line-height: 1.5;
+    letter-spacing: -0.56px;
   }
 
   .row-desc {
     margin: 0;
     color: #5d606d;
-    font-size: 15px;
+    font-size: 22px;
     font-weight: 400;
-    line-height: 28px;
-    letter-spacing: -0.5px;
+    line-height: 1.5;
+    letter-spacing: -0.56px;
     word-break: keep-all;
   }
 
@@ -832,14 +833,20 @@ const Timetable = styled(Section)`
     }
 
     .row {
-      grid-template-columns: 72px minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 16px;
     }
+  }
 
+  @media (max-width: 768px) {
     .row-title,
     .row-desc {
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .row {
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 12px;
     }
   }
 `;

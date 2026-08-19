@@ -56,9 +56,11 @@ const PrimaryLink = styled(Link)`
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
 
+  &:hover,
   &:active {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 `;
 
@@ -81,6 +83,7 @@ const ApplyLink = styled(Link)`
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
 
   img {
     width: 9px;
@@ -89,8 +92,9 @@ const ApplyLink = styled(Link)`
     flex-shrink: 0;
   }
 
+  &:hover,
   &:active {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 `;
 
@@ -105,11 +109,17 @@ const CloseButton = styled.button`
   background: transparent;
   cursor: pointer;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
 
   img {
     width: 12.5px;
     height: 12.5px;
     display: block;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 0.7;
   }
 `;
 

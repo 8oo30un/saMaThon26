@@ -107,7 +107,7 @@ const MenuList = styled.nav`
     }
 
     &.active {
-      color: ${(props) => (props.$light ? "#fff" : "#5170ff")};
+      color: ${(props) => (props.$light ? "#fff" : "#000")};
       opacity: 1;
     }
   }
@@ -142,7 +142,7 @@ const MenuList = styled.nav`
       }
 
       &.active {
-        color: #5170ff;
+        color: #000;
         opacity: 1;
       }
     }
