@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -22,11 +23,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app); // Initialize Firebase Storage
+const storage = getStorage(app);
+
+// Firebase Analytics (브라우저 환경에서만)
+let analytics = null;
+isSupported()
+  .then((supported) => {
+    if (supported) {
+      analytics = getAnalytics(app);
+    }
+  })
+  .catch(() => {});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
 reportWebVitals();
 
-export { db, storage };
+export { db, storage, analytics };
