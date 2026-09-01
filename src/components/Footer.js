@@ -48,9 +48,10 @@ const InfoRow = styled.div`
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
   }
 `;
 
@@ -58,14 +59,18 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
+  flex: 1;
 
   p {
     margin: 0;
     color: #fff;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     letter-spacing: -0.5px;
-    line-height: 1;
+    line-height: 1.45;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 `;
 
@@ -76,7 +81,7 @@ const EmailButton = styled.a`
   background: #5170ff;
   color: #fff;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.5px;
   line-height: 1;
@@ -105,7 +110,7 @@ const Divider = styled.div`
 const Copyright = styled.p`
   margin: 0;
   color: #747881;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: -0.5px;
   line-height: 1;
@@ -120,7 +125,7 @@ function Footer() {
           <InfoRow>
             <Info>
               <p>담당  |  한동대학교 사랑의 마라톤 TFT</p>
-              <p>문의  |  054-260-1874</p>
+              <p>문의  |  054-260-1883, 1874</p>
             </Info>
             <EmailButton href="mailto:26lovemarathon@gmail.com">
               문의 / 후원 Email

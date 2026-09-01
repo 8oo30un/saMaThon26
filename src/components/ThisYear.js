@@ -36,9 +36,9 @@ const ThisYearWrapper = styled.div`
   }
 
   .left {
-    font-size: 56px;
+    font-size: 58px;
     @media screen and (max-width: 768px) {
-      font-size: 36px;
+      font-size: 38px;
     }
   }
 
@@ -73,10 +73,10 @@ const ThisYearWrapper = styled.div`
     font-weight: 400;
     color: #FD40B3;
     text-align: center;
-    font-size: 40px;
+    font-size: 42px;
     margin: 0;
     @media screen and (max-width: 768px) {
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 
@@ -86,12 +86,12 @@ const ThisYearWrapper = styled.div`
     font-weight: 400;
     color: #FD40B3;
     text-align: center;
-    font-size: 56px;
+    font-size: 58px;
     margin: 0;
     line-height: 110%;
 
     @media screen and (max-width: 768px) {
-      font-size: 32px;
+      font-size: 34px;
     }
   }
 
@@ -147,10 +147,10 @@ const ThisYearWrapper = styled.div`
     font-optical-sizing: auto;
     font-weight: 400;
     color: #FD40B3;
-    font-size: 80px;
+    font-size: 82px;
     letter-spacing: -1.92px;
     @media screen and (max-width: 768px) {
-      font-size: 40px;
+      font-size: 42px;
       letter-spacing: -1px;
     }
   }
@@ -181,7 +181,7 @@ const ThisYearWrapper = styled.div`
   .desc {
     color: #000000;
     font-family: Pretendard;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: 30px;
@@ -189,7 +189,7 @@ const ThisYearWrapper = styled.div`
     margin-bottom: 0px;
 
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 24px;
     }
   }
@@ -214,7 +214,7 @@ const ThisYearWrapper = styled.div`
   .title {
     color: #8C8C8C;
     font-family: Pretendard;
-    font-size: 24px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 800;
     line-height: 30px;
@@ -224,7 +224,7 @@ const ThisYearWrapper = styled.div`
     padding-left: 40px;
 
     @media screen and (max-width: 768px) {
-      font-size: 16px;
+      font-size: 18px;
       margin-top: 50px;
       margin-bottom: 10px;
       padding-left: 25px;
@@ -251,12 +251,12 @@ const ThisYearWrapper = styled.div`
   .desc2 {
     color: #000000;
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 36px;
     @media screen and (max-width: 768px) {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 30px;
     }
   }
@@ -307,20 +307,20 @@ const ThisYearWrapper = styled.div`
   .program-title {
     color: #8C8C8C;
     font-family: Pretendard;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 700;
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
   .program-description {
     color: #000000;
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 

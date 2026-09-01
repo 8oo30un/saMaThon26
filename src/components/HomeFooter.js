@@ -5,7 +5,7 @@ const FooterComponent = styled.footer`
   background-color: black;
   color: white;
   padding: 20px 40px;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,9 +22,14 @@ const FooterComponent = styled.footer`
 const FooterLeft = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  flex: 1;
 
   p {
     margin: 5px 0;
+    line-height: 1.45;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 `;
 
@@ -61,7 +66,7 @@ const ContactButton = styled.a`
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
 
   &:hover {
@@ -75,7 +80,7 @@ function HomeFooter() {
     <FooterComponent>
       <FooterLeft>
         <p>한동대학교 사랑의 마라톤 TFT</p>
-        <p>문의 내선번호: 054-260-1874</p>
+        <p>문의 내선번호: 054-260-1883, 1874</p>
         <p>© 2025 Love Marathon. All Rights Reserved.</p>
       </FooterLeft>
       <FooterRight>

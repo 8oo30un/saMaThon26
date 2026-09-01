@@ -26,7 +26,7 @@ const ArticleList = styled.div`
 const NoArticlesMessage = styled.div`
   text-align: center;
   color: #777;
-  font-size: 18px;
+  font-size: 20px;
   padding: 50px 0;
 `;
 
@@ -55,7 +55,7 @@ const ArticleContent = styled.div`
 const ArticleLink = styled(Link)`
   color: #000;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
 
   &:hover {
@@ -64,7 +64,7 @@ const ArticleLink = styled(Link)`
 `;
 
 const ArticleDescription = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -75,7 +75,7 @@ const ArticleDescription = styled.p`
 `;
 
 const ArticleDate = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   white-space: nowrap;
   align-self: flex-start;

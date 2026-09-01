@@ -30,7 +30,7 @@ const BannerWrapper = styled.div`
 
 const BannerText = styled.div`
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 `;
 
@@ -42,7 +42,7 @@ const bannerButtonStyles = `
   text-decoration: none;
   border-radius: 50px;
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
   font-weight: 700;
   display: inline-flex;
@@ -65,7 +65,7 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   color: white;
-  font-size: 36px;
+  font-size: 38px;
   line-height: 20px;
   cursor: pointer;
   margin-left: 10px;

@@ -82,7 +82,7 @@ const Tag = styled.div`
   span {
     color: #5170ff;
     font-weight: 700;
-    font-size: ${(props) => props.size || "22px"};
+    font-size: ${(props) => props.size || "24px"};
     letter-spacing: -0.8px;
     line-height: 1;
     text-align: center;
@@ -148,7 +148,7 @@ const Hero = styled(Section)`
 
   .theme {
     color: #5170ff;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.8px;
     text-align: center;
@@ -181,7 +181,7 @@ const Hero = styled(Section)`
 
   .verse {
     color: #6d7183;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.56px;
@@ -194,11 +194,11 @@ const Hero = styled(Section)`
     padding: 120px 20px 60px;
 
     .theme {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .verse {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 `;
@@ -263,7 +263,7 @@ const Intro = styled(Section)`
   .desc p {
     margin: 0;
     color: #6d7183;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.9;
     letter-spacing: -0.56px;
@@ -350,7 +350,7 @@ const Intro = styled(Section)`
     }
 
     .desc p {
-      font-size: 24px;
+      font-size: 26px;
       letter-spacing: -0.71px;
     }
 
@@ -396,7 +396,7 @@ const Intro = styled(Section)`
     }
 
     .desc p {
-      font-size: 16px;
+      font-size: 18px;
       letter-spacing: -0.56px;
     }
 
@@ -568,7 +568,7 @@ const ImageCard = styled.div`
   .caption p {
     margin: 0;
     font-family: "Nanum NeuRisNeuRisCe", cursive;
-    font-size: 26px;
+    font-size: 28px;
     line-height: 1.5;
     letter-spacing: -0.56px;
     color: #000;
@@ -595,7 +595,7 @@ const ImageCard = styled.div`
     }
 
     .caption p {
-      font-size: 22px;
+      font-size: 24px;
       white-space: normal;
     }
   }
@@ -647,7 +647,7 @@ const EventInfo = styled(Section)`
   .label {
     margin: 0;
     color: #4f5059;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     line-height: 1.9;
     letter-spacing: -0.56px;
@@ -656,7 +656,7 @@ const EventInfo = styled(Section)`
   .value {
     margin: 0;
     color: #5d606d;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.56px;
@@ -678,7 +678,7 @@ const EventInfo = styled(Section)`
 
     .label,
     .value {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 `;
@@ -788,7 +788,7 @@ const Timetable = styled(Section)`
   .row-title {
     margin: 0;
     color: #5170ff;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 700;
     line-height: 1.9;
     letter-spacing: -0.5589px;
@@ -797,7 +797,7 @@ const Timetable = styled(Section)`
   .row-desc {
     margin: 0;
     color: #6d7183;
-    font-size: 16px;
+    font-size: 19px;
     font-weight: 400;
     line-height: 1.9;
     letter-spacing: -0.5589px;
@@ -837,7 +837,7 @@ const Timetable = styled(Section)`
 
     .row-title,
     .row-desc {
-      font-size: 22px;
+      font-size: 25px;
       line-height: 1.5;
       letter-spacing: -0.56px;
     }
@@ -846,7 +846,7 @@ const Timetable = styled(Section)`
   @media (max-width: 768px) {
     .row-title,
     .row-desc {
-      font-size: 16px;
+      font-size: 19px;
     }
 
     .row {
@@ -1083,7 +1083,7 @@ const ThisYear2026 = () => {
         <Deco className="deco-2" src={decoStarBlue} alt="" />
         <Deco className="deco-3" src={decoStarBlue} alt="" />
         <div className="title">
-          <SectionTag size="24px">사랑의 마라톤 미리보기</SectionTag>
+          <SectionTag size="26px">사랑의 마라톤 미리보기</SectionTag>
         </div>
         <div className="grid">
           {previewCards.map((card) => (
@@ -1103,7 +1103,7 @@ const ThisYear2026 = () => {
       <EventInfo>
         <img className="bg" src={eventDeco} alt="" />
         <div className="inner">
-          <SectionTag size="24px">행사 정보</SectionTag>
+          <SectionTag size="26px">행사 정보</SectionTag>
           <div className="body">
             <div className="item">
               <p className="label">일시</p>
@@ -1125,7 +1125,7 @@ const ThisYear2026 = () => {
         <Deco className="deco-1" src={decoStarBlueTt} alt="" />
         <div className="inner">
           <div className="title">
-            <SectionTag size="24px">일정 및 타임테이블</SectionTag>
+            <SectionTag size="26px">일정 및 타임테이블</SectionTag>
           </div>
           <div className="content">
             <div className="image-wrap">
@@ -1160,7 +1160,7 @@ const ThisYear2026 = () => {
         <Deco className="deco-2" src={decoStarGreen} alt="" />
         <Deco className="deco-3" src={decoStarGreen} alt="" />
         <div className="title">
-          <SectionTag size="24px">지난 사랑의 마라톤 살펴보기</SectionTag>
+          <SectionTag size="26px">지난 사랑의 마라톤 살펴보기</SectionTag>
         </div>
         <div className="list">
           <div className="video">

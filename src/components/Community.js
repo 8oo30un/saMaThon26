@@ -42,7 +42,7 @@ const Chip = styled.button`
   padding: 10px 20px;
   margin: 0 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
 
@@ -69,7 +69,7 @@ const NoArticlesMessage = styled.div`
   grid-column: 1 / -1;
   text-align: center;
   color: #777;
-  font-size: 18px;
+  font-size: 20px;
   padding: 50px 0;
 `;
 
@@ -102,13 +102,13 @@ const ArticleDateCategory = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 20px;
-  font-size: 14px;
+  font-size: 16px;
   align-items: center;
   color: #444;
 `;
 
 const ArticleDate = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
 `;
 
@@ -119,7 +119,7 @@ const CategoryTag = styled.span`
   border-radius: 20px;
   padding: 5px 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
 
@@ -142,14 +142,14 @@ const ArticleContent = styled.div`
 `;
 
 const ArticleTitle = styled.h2`
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 0px;
   font-weight: bold;
   line-height: 1.3;
 `;
 
 const ArticleDescription = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   margin: 8px 0px;
   flex-grow: 1;

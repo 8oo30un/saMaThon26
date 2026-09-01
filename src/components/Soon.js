@@ -17,7 +17,7 @@ const Section = styled.section`
   }
 
   .title {
-    font-size: 36px;
+    font-size: 38px;
     line-height: 57px;
     font-weight: 700;
     color: #e6e1e6;
@@ -26,7 +26,7 @@ const Section = styled.section`
   }
   @media screen and (max-width: 768px) {
     .title {
-      font-size: 24px;
+      font-size: 26px;
       line-height: 30px;
       font-weight: 700;
       color: #e6e1e6;
@@ -36,14 +36,14 @@ const Section = styled.section`
   }
 
   .subtitle {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 31px;
     color: #e6e1e6;
     margin-bottom: 100px;
   }
   @media screen and (max-width: 768px) {
     .subtitle {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 20px;
       color: #e6e1e6;
     }

@@ -93,7 +93,7 @@ const MenuList = styled.nav`
     text-decoration: none;
     color: ${(props) => (props.$light ? "#fff" : "#000")};
     font-family: Pretendard, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.5px;
     line-height: 1;
@@ -132,7 +132,7 @@ const MenuList = styled.nav`
     backdrop-filter: blur(16px);
 
     a {
-      font-size: 18px;
+      font-size: 20px;
       color: #000;
       text-shadow: none;
 
@@ -176,7 +176,7 @@ const ApplyButton = styled(Link)`
   background: #5170ff;
   color: #fff;
   font-family: Pretendard, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.5px;
   line-height: 1;
@@ -204,7 +204,7 @@ const Tooltip = styled.button`
   background: #0f172a;
   color: #f9fafb;
   font-family: Pretendard, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   padding: 6px 12px;
@@ -259,7 +259,7 @@ const MobileApplyLink = styled(Link)`
     background: #5170ff;
     color: #fff !important;
     font-family: Pretendard, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.5px;
     text-decoration: none;

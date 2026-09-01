@@ -91,23 +91,23 @@ const GalleryContainer = styled.div`
   }
 
   .title {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 1rem;
     margin-top: 10px;
 
     @media screen and (max-width: 768px) {
       padding-top: 10px;
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 
   .topp {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
 
     @media screen and (max-width: 768px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
@@ -175,7 +175,7 @@ const GalleryContainer = styled.div`
         h6 {
           color: #636363;
           font-family: Pretendard;
-          font-size: 16px;
+          font-size: 18px;
           font-style: normal;
           font-weight: 400;
           line-height: 20px;
@@ -183,7 +183,7 @@ const GalleryContainer = styled.div`
           margin-left: 4px;
 
           @media screen and (max-width: 768px) {
-            font-size: 10px;
+            font-size: 12px;
             line-height: 10px;
           }
         }
@@ -191,7 +191,7 @@ const GalleryContainer = styled.div`
         h2 {
           color: #464646;
           font-family: Pretendard;
-          font-size: 80px;
+          font-size: 82px;
           line-height: 80px;
           font-style: normal;
           font-weight: 700;
@@ -199,7 +199,7 @@ const GalleryContainer = styled.div`
           letter-spacing: -5px;
           @media screen and (max-width: 768px) {
             letter-spacing: -2px;
-            font-size: 30px;
+            font-size: 32px;
             line-height: 30px;
           }
         }
@@ -207,14 +207,14 @@ const GalleryContainer = styled.div`
         p {
           color: #464646;
           font-family: Pretendard;
-          font-size: 24px;
+          font-size: 26px;
           font-style: normal;
           font-weight: 700;
           line-height: 30px;
           margin: 0px;
           letter-spacing: -1px;
           @media screen and (max-width: 768px) {
-            font-size: 14px;
+            font-size: 16px;
             line-height: 16px;
           }
         }
@@ -296,7 +296,7 @@ const GalleryContainer = styled.div`
     }
     span {
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       color: grey;
       padding-top: 1px;
       &.active {
@@ -314,7 +314,7 @@ const GalleryContainer = styled.div`
         display: block;
       }
       span {
-        font-size: 14px;
+        font-size: 16px;
       }
     }
   }
@@ -322,7 +322,7 @@ const GalleryContainer = styled.div`
     color: #FD40B3;
     background-color: rgba(0, 0, 0, 0);
     padding: 12px 50px;
-    font-size: 20px;
+    font-size: 22px;
     font-family: Pretendard;
     font-weight: 600;
     cursor: pointer;
@@ -331,7 +331,7 @@ const GalleryContainer = styled.div`
     margin-top: 10px;
     @media screen and (max-width: 768px) {
       padding: 7px 10px;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
@@ -339,7 +339,7 @@ const GalleryContainer = styled.div`
     color: #5170ff;
     background-color: rgba(0, 0, 0, 0);
     padding: 12px 50px;
-    font-size: 20px;
+    font-size: 22px;
     font-family: Pretendard;
     font-weight: 700;
     cursor: pointer;
@@ -349,7 +349,7 @@ const GalleryContainer = styled.div`
     letter-spacing: -0.67px;
     @media screen and (max-width: 768px) {
       padding: 7px 10px;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 `;

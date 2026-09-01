@@ -22,14 +22,14 @@ const Label = styled.label`
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
 `;
 
 const Input = styled.input`
   width: 100%;
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
@@ -44,7 +44,7 @@ const FileInput = styled.input`
   display: block;
   margin-top: 10px;
   padding: 5px;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
 `;
@@ -56,7 +56,7 @@ const CheckboxWrapper = styled.div`
 `;
 
 const CheckboxLabel = styled.label`
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   margin-left: 10px;
 `;
@@ -64,7 +64,7 @@ const CheckboxLabel = styled.label`
 const SubmitButton = styled.button`
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
   background-color: #005bca;

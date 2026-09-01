@@ -60,7 +60,7 @@ const Header = styled.div`
     color: #fff;
     text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;

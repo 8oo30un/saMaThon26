@@ -24,19 +24,19 @@ const ArticleHeader = styled.div`
 `;
 
 const ArticleDate = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   margin-bottom: 10px;
 `;
 
 const ArticleTitle = styled.h1`
-  font-size: 32px;
+  font-size: 34px;
   font-weight: bold;
   margin-bottom: 10px;
 `;
 
 const WriterInfo = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   margin-bottom: 10px;
 `;
@@ -47,7 +47,7 @@ const CategoryTag = styled.span`
   border: 1px solid #ddd;
   border-radius: 20px;
   padding: 5px 10px;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
 `;

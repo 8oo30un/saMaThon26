@@ -50,7 +50,7 @@ const PrimaryLink = styled(Link)`
   color: #5170ff;
   border-radius: 6px;
   font-family: Pretendard, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.4px;
   line-height: 1;
@@ -76,7 +76,7 @@ const ApplyLink = styled(Link)`
   color: #fff;
   border-radius: 6px;
   font-family: Pretendard, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.4px;
   line-height: 1;

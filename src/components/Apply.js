@@ -229,7 +229,7 @@ const Title = styled.h1`
   margin: 0 0 60px;
   color: #5170ff;
   font-family: Pretendard, sans-serif;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.8px;
   line-height: 1;
@@ -244,7 +244,7 @@ const Title = styled.h1`
   }
 
   @media (max-width: 900px) {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 36px;
     white-space: normal;
   }
@@ -341,7 +341,7 @@ const Card = styled.a`
     background: ${(props) => props.$tagColor};
     color: #fff;
     font-family: Pretendard, sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: -0.56px;
     line-height: 1.9;
@@ -352,7 +352,7 @@ const Card = styled.a`
     margin: 0;
     color: #fff;
     font-family: Pretendard, sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.56px;
     line-height: 1.9;
@@ -362,7 +362,7 @@ const Card = styled.a`
     margin: 0;
     color: #e0e2e9;
     font-family: Pretendard, sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     letter-spacing: -0.56px;
     line-height: 1.6;

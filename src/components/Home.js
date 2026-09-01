@@ -55,7 +55,7 @@ const HomeWrapper = styled.div`
     color: #fff;
     text-align: center;
     font-family: Pretendard, sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.8px;
     line-height: 1;
@@ -73,7 +73,7 @@ const HomeWrapper = styled.div`
     text-align: center;
     font-family: Pretendard;
     letter-spacing: -1.2px;
-    font-size: 40px;
+    font-size: 42px;
     font-style: normal;
     font-weight: 700;
     line-height: 160%;
@@ -92,7 +92,7 @@ const HomeWrapper = styled.div`
     background: #3300ff;
     border-radius: 25px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 24px;
     text-decoration: none;
     text-align: center;
@@ -127,16 +127,16 @@ const HomeWrapper = styled.div`
     }
 
     .theme {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .title {
-      font-size: 30px;
+      font-size: 32px;
       line-height: 43px;
     }
 
     .desc {
-      font-size: 28px;
+      font-size: 30px;
       line-height: 170%;
       word-break: keep-all;
     }
@@ -176,14 +176,14 @@ const Card = styled.div`
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     margin-top: 0;
   }
 
   p {
     text-align: start;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     color: #333;
     margin-bottom: 0;
